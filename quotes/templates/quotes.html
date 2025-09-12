@@ -1,0 +1,17 @@
+<!-- quotes/templates/quotes.html-->
+
+{% extends 'base.html' %}
+    {% block content %}
+
+        <div class="quote-page">
+            <h1>Steve Irwin Image and Quote</h1>
+
+            <img src={{photo}} width="500" height="500"/>
+            
+            <div class="quote-box">
+                <p>
+                     "{{quote}}"
+                </p>
+            </div>
+        </div>
+    {% endblock %}

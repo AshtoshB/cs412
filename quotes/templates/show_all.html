@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+    {% block content %}
+        <div class="show-all-page">
+
+            <h1>Steve Irwin</h1>
+        
+                <h3> Images of Steve Irwin</h3>
+
+                <div class="image-grid">
+                    {% for img in images %}
+                        <img src={{img}} />
+                    
+                    {% endfor %}
+                </div>
+
+            
+            
+                <h3> Quotes by Steve Irwin</h3>
+                <div class="quote-grid">
+                    {% for quote in quotes %}
+                        <div class="quote-box">
+                            <p>"{{quote}}"</p>
+                        </div>
+                       
+                    {% endfor %}
+                </div>
+
+            
+
+        </div>    
+    {% endblock %}

@@ -1,0 +1,91 @@
+/* ==== Navigation (base.html) page ==== */
+nav {
+    background-color: rgba(48, 49, 46, 0.689);
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav li {
+    display: inline;
+    margin: 0 10px;
+    list-style: none;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ==== qutoes.html Page ==== */
+.quote-page {
+    text-align: center;
+    background-color: rgba(71, 76, 61, 0.689);
+}
+
+.quote-page img {
+    width: 250px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 4px;
+}
+
+.quote-box {
+    display: block;
+    background-color: rgba(97, 102, 85, 0.689);
+    padding: 15px 20px;
+    border-left: 4px solid #888;
+    border-right: 4px solid #888;
+    border-top: 4px solid #888;
+    border-bottom: 4px solid #888;
+    font-style: italic;
+    text-align: left;
+    
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ==== Show All Page ==== */
+.show-all-page {
+    background-color: rgba(71, 76, 61, 0.689);
+    text-align: center;
+    padding: 20px;
+}
+
+.image-grid img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover; 
+    border-radius: 4px;
+    padding: 10px;
+}
+
+/* about.css */
+.about-page {
+    text-align: center;
+    background-color: rgba(71, 76, 61, 0.689);
+}
+
+.about-box {
+    display: block;
+    background-color: rgba(97, 102, 85, 0.689);
+    border-left: 4px solid #151e16;
+    border-right: 4px solid #151e16;
+    border-top: 4px solid #151e16;
+    border-bottom: 4px solid #151e16;
+    font-style: Bold;
+    text-align: center;
+    font-size: larger;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+
+
+
+
