@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-t)2!qs#9nkopn+q3$i248nmwrbp!b+s)lg^f=x^*qj95y2l!mq
 DEBUG = True
 
 ALLOWED_HOSTS = ['cs-webapps.bu.edu',
-                "*"
+                
 ]
 
 
@@ -117,6 +117,8 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+STATIC_URL = 'static/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 

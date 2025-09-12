@@ -1,4 +1,6 @@
 # file: quotes/views.py
+# author: Ashtosh Bhandari ashtosh@bu.edu
+# description: the controller for quotes appilcaiton 
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 import random
