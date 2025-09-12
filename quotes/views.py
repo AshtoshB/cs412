@@ -26,7 +26,6 @@ images = ["data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTEx
           "https://www.etonline.com/sites/default/files/styles/640xh/public/brightcove/videos/images/posters/steveirwin_1280.jpg",
           ]
 
-count = [0,1,2,3,4]
 
 # Create your views here.
 def main(request):
