@@ -46,11 +46,11 @@ def main(request):
 
     }
 
-
     return render(request, template_name, context)
 
 def show_all(request):
     '''Fund to respond to the "show_all" request. Shows all images of >>> and thier quotes'''
+    
     template_name = "show_all.html"
 
     context = {
