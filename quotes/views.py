@@ -30,7 +30,7 @@ images = ["data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTEx
 
 
 # Create your views here.
-def main(request):
+def main_page(request):
     '''Fund to respond to the "main" request. Acts as the main page displaying a famous person and a quote from them'''
     
     # using random to chose which image and quote to pick 
