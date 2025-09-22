@@ -9,11 +9,11 @@
 
             <h3> Here is Your Order Summary:</h3>
             
-            <div class="menu-container customer-info-box"> 
+            <div class="menu-container"> 
                 <div class="info-row">
-                    Name: {{ name }} 
-                    Phone: {{ phone }} 
-                    email: {{ email }} 
+                    <div class="info-content">Name: {{ name }}</div>
+                    <div class="info-content">Phone: {{ phone }}</div>
+                    <div class="info-content">email: {{ email }}</div> 
                 </div>
             </div>
 
@@ -33,7 +33,7 @@
 
                     {% for addon in addons %}
                     <tr>
-                        <td>+{{ addon }}</td>
+                        <td class="addon">+{{ addon }}</td>
                         <td>—</td>
                     </tr>
                     {% endfor %}
