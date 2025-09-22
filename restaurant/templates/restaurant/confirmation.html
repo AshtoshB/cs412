@@ -1,0 +1,59 @@
+<!-- restaurant/templates/restaurant/confirmation.html-->
+
+
+{% extends 'restaurant/base.html' %}
+    {% block content %}
+
+        <div class="confirmation">
+            <h1>Thank You For Ordering</h1>
+
+            <h3> Here is Your Order Summary:</h3>
+            
+            <div class="menu-container customer-info-box"> 
+                <div class="info-row">
+                    Name: {{ name }} 
+                    Phone: {{ phone }} 
+                    email: {{ email }} 
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <table class="order-table">
+                    <tr>
+                        <th>Sandwiches</th>
+                        <th>Price</th>
+                    </tr>
+
+                    {% if ordered_special %}
+                    <tr>
+                        <td>{{ ordered_special }}</td>
+                        <td>${{ ordered_special_detail.price }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% for addon in addons %}
+                    <tr>
+                        <td>+{{ addon }}</td>
+                        <td>—</td>
+                    </tr>
+                    {% endfor %}
+
+                    {% for sandwich in ordered_sandwhiches %}
+                    <tr>
+                        <td>{{ sandwich.name }}</td>
+                        <td>${{ sandwich.price }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <th>Total</th>
+                        <th>${{ total }}</th>
+                    </tr>
+                </table>
+                
+            </div>
+
+            <p>Special Noet: {{instructions}}</p>
+
+        </div>
+    {% endblock %}

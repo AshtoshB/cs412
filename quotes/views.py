@@ -37,7 +37,7 @@ def main_page(request):
     image_picker = random.randint(0, len(images)-1)
     quotes_picker = random.randint(0, len(quotes)-1)
 
-    template_name = "quotes.html"
+    template_name = "quotes/quotes.html"
 
     # a dict of context variable (key, value)
     context = {
@@ -49,9 +49,9 @@ def main_page(request):
     return render(request, template_name, context)
 
 def show_all(request):
-    '''Fund to respond to the "show_all" request. Shows all images of >>> and thier quotes'''
+    '''Fund to respond to the "show_all" request. Shows all images of Steve Irwin and his quotes'''
     
-    template_name = "show_all.html"
+    template_name = "quotes/show_all.html"
 
     context = {
         "images": images,
@@ -63,6 +63,6 @@ def show_all(request):
 def about(request):
     '''Fund to respond to the "about" request.'''
 
-    template_name = "about.html"
+    template_name = "quotes/about.html"
 
     return render (request, template_name)

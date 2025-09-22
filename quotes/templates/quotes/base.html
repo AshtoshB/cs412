@@ -1,0 +1,21 @@
+<!-- quotes/templates/base.html-->
+
+{% load static%}
+<html>
+    <head>
+        <title> Quotes By Steve Irwin</title>
+        <link rel="stylesheet" href="{% static 'quotes/style.css'%}">
+    </head>
+
+    <body>
+        <nav>
+            <li> <a href = "{% url 'quote:quote_page' %}">Quotes</a></li>
+            <li> <a href = "{% url 'quote:show_all' %}">Show all</a></li>
+            <li> <a href = "{% url 'quote:about' %}">About us</a></li>
+
+        </nav>
+        <!-- page specific contenet here-->
+         {% block content %}
+         {% endblock %}
+    </body>
+</html>

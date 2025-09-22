@@ -1,3 +1,5 @@
+/* ========================================= qutoes page css ========================================= */
+
 /* ==== Navigation (base.html) page ==== */
 nav {
     background-color: rgba(48, 49, 46, 0.689);
@@ -84,8 +86,6 @@ nav a:hover {
     margin: 0 auto;
     padding-bottom: 10px;
 }
-
-
 
 
 

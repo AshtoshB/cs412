@@ -1,0 +1,176 @@
+
+
+/* ========================================= restaurant page css ========================================= */
+/* ==== Navigation (base.html) page ==== */
+nav {
+    background-color: rgba(152, 198, 62, 0.689);
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav li {
+    display: inline;
+    margin: 0 10px;
+    list-style: none;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==== Main Page (main.html)  ==== */
+body {
+    background-color: rgba(156, 227, 15, 0.689);
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 30px ;
+    background-color: aliceblue;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+.location {
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.hours {
+    display: flex;
+    justify-content: center;
+}
+
+.hours-table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.hours-table th {
+    border: 3px solid;
+    padding: 10px;
+    text-align: center;
+}
+
+.images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.images img {
+    width: 350px;
+    height: auto;
+    object-fit: cover;
+}
+
+
+/* ==== Order Page (order.html)  ==== */
+.order {
+    max-width: 80%;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: aliceblue;
+}
+
+.menu-container {
+    border: 4px;
+    border-style: solid;
+    border-color: #bb4242;
+    background-color: rgba(187, 190, 151, 0.262);
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+.menu {
+    width: 100%;
+    border: 1px; 
+    border-style:solid;
+    border-color: #66c7ce;
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 370px;
+    margin-bottom: 20px;
+    background-color: rgba(152, 233, 184, 0.577);
+}
+
+.menu-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 5px;
+
+}
+
+.ingredients {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.addons {
+    margin-left: 20px;
+    
+}
+
+.form {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+textarea {
+    width: 100%;
+    
+}
+
+.customer-info input {
+    margin-right: 5px;
+}
+
+
+/* ==== Confirmation Page (confirmation.html)  ==== */
+
+.confirmation {
+    max-width: 80%;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: aliceblue;
+
+}
+.customer-info-box .info-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.customer-info-box .info-row{
+    flex: 1;
+    min-width: 150px;
+
+}
+
+.order-table {
+    width: 100%;
+}

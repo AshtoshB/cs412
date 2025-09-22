@@ -1,0 +1,83 @@
+<!-- restaurant/templates/restaurant/order.html-->
+
+
+{% extends 'restaurant/base.html' %}
+    {% block content %}
+
+        <div class="order">
+            <h1>Order Your Sandwiches Now</h1>
+
+            <form action="{% url 'confirmation_page' %}" method="POST">
+                {% csrf_token %}
+
+                <!-- Daily Special -->
+                 <div class="menu-container">
+                    
+                    <h2>Today's Daily Special</h2>
+
+                    <div class="menu">
+                            <input type ="checkbox" name="order_special" value="{{ daily_special }}">
+                            <span class="menu-title"> {{ daily_special }} - ${{daily_special_detail.price}}</span>
+
+                        <div class="ingredients">
+                            Ingredients: {{ daily_special_detail.ingredients}}
+                        </div>
+
+                        <div class="addons">
+                            Add-ons/Extra: 
+                            <br>
+                            {% for addon in add_ons %}
+
+                                    <input type="checkbox" name="addons" value="{{ addon }}">
+                                    {{ addon }}
+                                
+                                <br>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regular Menu Items -->
+                <div class="menu-container">
+                    
+                    <h2>Menu</h2>
+
+                    {% for sandwich, sandwich_info in menu.items %}
+                        <div class="menu">
+                            <label>
+                                <input type="checkbox" name="order_items" value="{{ sandwich }}">
+                                <span class="menu-title">{{ sandwich }} - ${{ sandwich_info.price }}</span>
+                            </label>
+
+                            <div class="ingredients">
+                                Ingredients: {{ sandwich_info.ingredients }}
+                            </div>
+
+                            
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Special Instructions -->
+                <div class="form">
+                    <h3>Special Instructions:</h3>
+                    <br>
+                    <textarea name="instructions" id="instructions"  placeholder="Anything we should know?"></textarea>
+                </div>
+
+                <!-- Customer Information -->
+                <div class="form customer-info">
+                    <h3>Your Info:</h3>
+                    <br>
+                    <input type="text" name="name" placeholder="Name" >
+                    <input type="tel" name="phone" placeholder="Phone" >
+                    <input type="email" name="email" placeholder="Email" >
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit">Submit Order</button>
+
+            </form>
+        
+        </div>
+    {% endblock %} 

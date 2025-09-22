@@ -1,0 +1,40 @@
+<!-- restaurant/templates/restaurant/main.html-->
+
+
+{% extends 'restaurant/base.html' %}
+    {% block content %}
+        <div class="main"> 
+            <h1> Ash's Italian Bakery</h1>
+            <p class="location">Location: 123 Tallow Creek, Bostonia </p>
+
+            <!-- Hours  -->
+            <h3> Hours of Operation</h3>
+            <div class ="hours">
+                <table class="hours-table">
+                    <tr>
+                        <th>Day</th>
+                        <th>Open Hours</th>
+                    </tr>
+
+                    <tr>
+                        <th>Mon-Fri</th>
+                        <th>7AM-6PM</th>
+                    </tr>
+
+                    <tr>
+                        <th>Sat-Sun</th>
+                        <th>7AM-8PM</th>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Bakery image-->
+            <div class="images">
+                    {% for img in images %}
+                        <img src={{img}} alt = "Marzilli's Bakery"/>
+                    
+                    {% endfor %}
+            </div>
+
+        </div>
+    {% endblock %}

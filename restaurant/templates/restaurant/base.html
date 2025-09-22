@@ -1,0 +1,19 @@
+<!-- restaurant/templates/restaurant/base.html-->
+
+{% load static%}
+<html>
+    <head>
+        <title> Ash's Italian Bakery</title>
+        <link rel="stylesheet" href="{% static 'restaurant/style.css'%}">
+    </head>
+
+    <body>
+        <nav>
+            <li> <a href = "{% url 'main_page' %}">Home</a></li>
+            <li> <a href = "{% url 'order_page' %}">Make an Order</a></li>
+        </nav>
+        <!-- page specific contenet here-->
+         {% block content %}
+         {% endblock %}
+    </body>
+</html>
