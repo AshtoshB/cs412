@@ -1,3 +1,6 @@
+# file: mini_insta/admin.py
+# author: Ashtosh Bhandari ashtosh@bu.edu
+# description: main navigation, navigates to corresponding applications
 """
 URL configuration for cs412 project.
 
@@ -21,6 +24,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path ('quotes/', include(('quotes.urls', 'quote'), namespace='quotes')),
-    path ('restaurant/', include('restaurant.urls')),
+    path('quotes/', include(('quotes.urls', 'quote'), namespace='quotes')),
+    path('restaurant/', include('restaurant.urls')),
+    path('mini_insta/', include('mini_insta.urls')), 
 ] + static (settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,3 +1,6 @@
+# file: mini_insta/admin.py
+# author: Ashtosh Bhandari ashtosh@bu.edu
+
 """
 ASGI config for cs412 project.
 

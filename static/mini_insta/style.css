@@ -1,0 +1,150 @@
+/* ========================================= mini_insta page css ========================================= */
+/* ==== Navigation (base.html) page ==== */
+.nav-header {
+    background-color: #0f0f0f;
+    padding: 1rem 0;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.nav-container {
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.nav-footer {
+    max-width: 90%;
+    margin: 10 auto  ;
+    padding: 2rem;
+    background-color: #111111;
+    border-radius: 8px;
+    text-align: center;
+    list-style: none;
+    text-decoration: none;
+}
+
+.nav-footer a:hover {
+    text-decoration: underline;
+}
+
+
+.nav-footer a:visited {
+    color: white;          
+    text-decoration: none;        
+}
+
+
+/* ==== Show All (show_all_profiles.html) page ==== */
+body{
+    background-color: rgba(54, 15, 227, 0.758);
+    margin: 0;
+    padding: 0;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 2rem 0;
+}
+
+.profiles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.profile-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.profile-card:hover {
+    border: solid;
+
+}
+
+.profile-image {
+    width: 100%;
+    height: 200px;
+    object-fit: scale-down cover;
+    display: block;
+}
+
+.profile-info {
+    padding: 1rem;
+}
+
+.display-name {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #222;
+}
+
+.username {
+    font-size: 1rem;
+    color: #888;
+    overflow: hidden;
+}
+
+
+/* ==== Profile (show_profile.html) page ==== */
+
+.profile-page {
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.profile-image-large {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 40%;
+    border: 2px solid #ccc;
+}
+
+.profile-header-info {
+    flex: 1;
+}
+
+.profile-name {
+    font-size: 2rem;
+    margin: 0;
+    color: #222;
+}
+
+.profile-username {
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 0.5rem;
+}
+
+.profile-bio {
+    margin-top: 2rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+    white-space: pre-wrap; 
+}
+
+
+
+

@@ -1,0 +1,32 @@
+<!--file: templates/mini_insta/show_proflie.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the page that extends the base and contains specific profile -->
+
+{% extends 'mini_insta/base.html' %}
+    {% block content %}
+    
+    <div class="profile-page">
+
+        <div class="profile-header">
+            <img class="profile-image-large" src="{{ profile.profile_image_url }}" alt="{{ profile.display_name }}'s profile picture">
+            
+            <div class="profile-header-info">
+                <h1 class="profile-name">{{ profile.display_name }}</h1>
+                <p class="profile-username">@{{ profile.username }}</p>
+            </div>
+        </div>
+
+        
+        <div class="profile-bio">
+            <p>{{ profile.bio_text }}</p>
+        </div>
+        
+
+    </div>
+
+
+
+
+{% endblock%}
+
+ 

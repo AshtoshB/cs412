@@ -1,3 +1,6 @@
+# file: mini_insta/admin.py
+# author: Ashtosh Bhandari ashtosh@bu.edu
+# description: settings for the django application
 """
 Django settings for cs412 project.
 
@@ -41,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'quotes',
-    'restaurant'
+    'restaurant',
+    'mini_insta', #New
 ]
 
 MIDDLEWARE = [

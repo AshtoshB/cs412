@@ -1,0 +1,38 @@
+<!--file: templates/mini_insta/base.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the static page that contains the navigation bar and footer-->
+
+{% load static%}
+<html>
+
+    <head>
+        <title> Mini Insta</title>
+        <link rel="stylesheet" href="{% static 'mini_insta/style.css'%}">
+    </head>
+
+    <body>
+        <header class="nav-header">
+
+            <div class="nav-container">
+                <h1>Mini Insta</h1>
+            </div>
+
+        </header>
+
+        
+        <!-- page specific contenet here-->
+         {% block content %}
+         {% endblock %}
+    </body>
+    
+    <footer class="nav-footer">
+
+        <div class="nav-container">
+            
+                <li><a href="{% url 'show_all' %}">All Profiles</a></li>
+            
+        </div>
+
+    </footer>
+
+</html>
