@@ -145,6 +145,38 @@ body{
     white-space: pre-wrap; 
 }
 
+/* ==== Profile (show_profile.html) page, post section ==== */
 
+.profile-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
+.post {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: white;
+    transition: box-shadow 0.3s;
+}
+
+.post:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.post img {
+    
+    width: 200px;
+    height: 200px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.post p {
+    font-size: 16px;
+    margin: 0;
+}
 
