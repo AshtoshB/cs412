@@ -22,26 +22,32 @@
         </div>
         
         <div class="profile-posts">
+            
             <h2>Posts</h2>
 
-            {% for post in profile.get_all_posts %}
-                <div class="post">
-                        
-                    {% for photo in post.get_all_photos %}
-                        
-                        <img src={{photo}} width="200" height="200"/>
-                                
-                        {% empty %}
-                            <img src="data:image/png;base64,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" alt="No Image" class="post-thumbnail">
-                    {% endfor %}
-
-                    <p>{{ post.caption }}</p>
-                </div>
+            <div class="profile-posts-grid">
+            
+                {% for post in profile.get_all_posts %}
+            
+                    <a href="{% url 'post_detail' post.pk %}" class="post">
                 
+                        {% if post.get_all_photos.first %}
+                        <img src="{{ post.get_all_photos.first.image_url }}" alt="Post thumbnail">
+
+                        {% else %}
+                            <img src="https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png" alt="No Image">
+                            
+                        {% endif %}
+
+                    </a>
+
                 {% empty %}
                     <p>No posts yet.</p>
-            {% endfor %}
+
+                {% endfor %}
+            </div>
         </div>
+
 
     </div>
 

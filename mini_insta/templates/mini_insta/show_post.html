@@ -1,0 +1,27 @@
+<!--file: templates/mini_insta/show_post.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the page that shows a post of a user from Profile -->
+
+{% extends 'mini_insta/base.html' %}
+{% block content %}
+
+    <div class="post-detail">
+        <h2>Post Details</h2>
+
+        <p><strong>Caption:</strong> {{ post.caption }}</p>
+        <p><strong>Posted on:</strong> {{ post.timestamp}}</p>
+
+        <div class="post-photos">
+
+            {% for photo in post.get_all_photos %}
+                <img src="{{ photo.image_url }}" alt="Photo {{ forloop.counter }}" width="400" />
+            
+            {% empty %}
+                <p>No photos for this post.</p>
+            
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

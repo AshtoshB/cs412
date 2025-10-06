@@ -30,7 +30,11 @@
         <div class="nav-container">
             
                 <li><a href="{% url 'show_all' %}">All Profiles</a></li>
-            
+
+                {% if profile %}
+                    <a href="{% url 'create_post' pk=profile.pk %}">Create Post</a>
+                {% endif %}
+                        
         </div>
 
     </footer>

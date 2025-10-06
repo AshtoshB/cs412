@@ -3,6 +3,7 @@
 # description: the file to create models for mini_insta applicaitons 
 
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Profile(models.Model):
@@ -26,6 +27,7 @@ class Profile(models.Model):
         posts = Post.objects.filter(profile=self)
         return posts
 
+    
 class Post(models.Model):
     '''Encapsulates the data of a user's post'''
 
@@ -48,6 +50,10 @@ class Post(models.Model):
         #use the object manager to retriev photos related to this post
         photos = Photo.objects.filter(post=self)
         return photos
+    
+    def get_absolute_url(self):
+        '''Return the URL to display one instance of this model'''
+        return reverse('post_detail', kwargs={'pk':self.pk})
 
 class Photo(models.Model):
     '''Encapsulates the data for user's Photo for a Post'''
