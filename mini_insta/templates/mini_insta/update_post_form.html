@@ -1,0 +1,27 @@
+<!--file: templates/mini_insta/update_post_form.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the page to update an existing Post-->
+
+{% extends 'mini_insta/base.html' %}
+{% block content %}
+
+    <div class="update-post-page">
+        <h1>Update Post</h1>
+
+        <form action="{% url 'update_post' pk=post.pk %}" method="POST">
+            {% csrf_token %}
+
+            <div class="form-table">
+                <table>
+                    {{ form.as_table }}
+                </table>
+            </div>
+
+            <div class="form-actions">
+                <input type="submit" value="Update" class="update-button" />
+                <a href="{% url 'post_detail' pk=post.pk %}" class="cancel-button">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

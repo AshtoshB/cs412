@@ -195,6 +195,22 @@ body{
     white-space: pre-wrap;
 }
 
+.profile-update-button {
+    background-color: black;  
+    color: #fff;
+    padding: 0.6rem 1.4rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+.profile-update-button:hover {
+    background-color: #585656;
+    border:solid;
+    border-color:purple;
+}
 /* ==== Profile Posts Section ==== */
 
 .profile-posts {
@@ -279,5 +295,160 @@ body{
     transition: transform 0.3s ease;
 }
 
+/* ==== Update Profile (update_profile_form.html) Page ==== */
+.update-profile-page {
+    max-width: 60%;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.update-profile-page h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+/* Form styling */
+.form-table table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+}
+
+.form-table td {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+}
+
+/* Button container */
+.form-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.update-button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.6rem 1.4rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.update-button:hover {
+    background-color: #8b8989;
+    border:solid;
+    border-color: purple;
+}
+
+.cancel-button {
+    background-color: #333;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.cancel-button:hover {
+    background-color: #8b8989;
+    border:solid;
+    border-color: purple;
+}
+
+/* ==== Update Post(update_post_form.html) Page ==== */
+.update-post-page {
+    max-width: 60%;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.update-post-page h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.form-table table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+}
+
+.form-table td {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+}
+
+.form-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+/* ==== Delete Post (delete_post.html) page ==== */
+.delete-post-page {
+    max-width: 60%;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.delete-post-page h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.delete-post-page p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.post-preview {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 2rem;
+}
+
+.post-preview img {
+    display: block;
+    margin-top: 1rem;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.delete-button {
+    background-color: red;  
+    color: #fff;
+    padding: 0.6rem 1.4rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+.delete-button:hover {
+    background-color: #d57373;
+    border:solid;
+    border-color:purple;
+}
 
 

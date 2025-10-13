@@ -26,6 +26,10 @@ class Profile(models.Model):
         #use the object manager to retriev posts related to this profile
         posts = Post.objects.filter(profile=self)
         return posts
+    
+    def get_absolute_url(self):
+            '''Return the URL to display this Profile instance'''
+            return reverse('profile', kwargs={'pk': self.pk})
 
     
 class Post(models.Model):
@@ -60,9 +64,26 @@ class Photo(models.Model):
     
     #define the data attributes of Post model
     post = models.ForeignKey(Post, on_delete=models.CASCADE) #foreign key to indicate the relationship to the Post to which this Photo is associated
-    image_url = models.TextField(blank=False) #URL to an image
+    image_url = models.TextField(blank=True) #URL to an image
+    image_file = models.ImageField(blank=True) #an actual image
     timestamp = models.DateTimeField(auto_now=True) #time at which this image was added
 
     def __str__(self):
         '''retrun a string representation of this Post'''
-        return f'{self.image_url}'
+        if self.image_file:
+            return f'Image file: {self.image_file.name}'
+        
+        elif self.image_url:
+            return f'Image URL: {self.image_url}'
+        else:
+            return f'There is no image associated with this post'
+        
+    def get_image_url(self):
+        '''return a image url for both image_url or image_file types'''
+        if self.image_file:
+            return self.image_file.url
+        
+        else:
+            return self.image_url
+    
+  

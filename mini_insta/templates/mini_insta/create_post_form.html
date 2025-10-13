@@ -8,15 +8,15 @@
     <h1>Create a new Post</h1>
 
     <!-- display the HTML form-->
-     <form  action="{% url 'create_post' pk=profile.pk %}" method="POST">
+     <form  action="{% url 'create_post' pk=profile.pk %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <table>
             {{ form.as_table }}
 
             <tr>
-            <td><label for="image_url">Image URL:</label></td>
-            <td><input type="text" name="image_url" id="image_url" required></td>
-        </tr>
+                <td><label for="image_url">Image URL:</label></td>
+                <td><input type="file" name="image_file" id="image_file" multiple></td>
+            </tr>
         </table>
         
 

@@ -1,0 +1,26 @@
+<!--file: templates/mini_insta/update_profile_form.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the page to update an existing Profile-->
+
+{% extends 'mini_insta/base.html' %}
+{% block content %}
+
+    <div class="update-profile-page">
+        <h1>Update Profile</h1>
+
+        <form action="{% url 'update_profile' pk=profile.pk %}" method="POST">
+            {% csrf_token %}
+            <div class="form-table">
+                <table>
+                    {{ form.as_table }}
+                </table>
+            </div>
+
+            <div class="form-actions">
+                <input type="submit" value="Update" class="update-button" />
+                <a href="{% url 'profile' pk=profile.pk %}" class="cancel-button">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

@@ -21,6 +21,13 @@
             <p>{{ profile.bio_text }}</p>
         </div>
         
+        <!-- Update profile button -->
+        <a class="profile-update-button" href="{% url 'update_profile' pk=profile.pk %}">
+            Update Profile
+        </a>
+    
+
+        
         <div class="profile-posts">
             
             <h2>Posts</h2>
@@ -32,7 +39,7 @@
                     <a href="{% url 'post_detail' post.pk %}" class="post">
                 
                         {% if post.get_all_photos.first %}
-                        <img src="{{ post.get_all_photos.first.image_url }}" alt="Post thumbnail">
+                        <img src="{{ post.get_all_photos.first.get_image_url }}" alt="Post thumbnail">
 
                         {% else %}
                             <img src="https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png" alt="No Image">

@@ -11,10 +11,16 @@
         <p><strong>Caption:</strong> {{ post.caption }}</p>
         <p><strong>Posted on:</strong> {{ post.timestamp}}</p>
 
+         <div class="post-actions">
+            <a href="{% url 'update_post' pk=post.pk %}" class="update-button">Update</a>
+            <a href="{% url 'delete_post' pk=post.pk %}" class="delete-button">Delete</a>
+        </div>
+
+        
         <div class="post-photos">
 
             {% for photo in post.get_all_photos %}
-                <img src="{{ photo.image_url }}" alt="Photo {{ forloop.counter }}" width="400" />
+                <img src="{{ photo.get_image_url }}" alt="Photo for post" width="400" />
             
             {% empty %}
                 <p>No photos for this post.</p>
