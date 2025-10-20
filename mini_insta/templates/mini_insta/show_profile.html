@@ -9,14 +9,25 @@
 
         <div class="profile-header">
             <img class="profile-image-large" src="{{ profile.profile_image_url }}" alt="{{ profile.display_name }}'s profile picture">
-            
+
             <div class="profile-header-info">
                 <h1 class="profile-name">{{ profile.display_name }}</h1>
                 <p class="profile-username">@{{ profile.username }}</p>
+
+                <div class="profile-stats">
+                    <a href="{% url 'show_followers' pk=profile.pk %}" class="stat-item">
+                        <span class="stat-count">{{ profile.get_num_followers }}</span>
+                        <span class="stat-label">Followers</span>
+                    </a>
+                    <a href="{% url 'show_following' pk=profile.pk %}" class="stat-item">
+                        <span class="stat-count">{{ profile.get_num_following }}</span>
+                        <span class="stat-label">Following</span>
+                    </a>
+                </div>
             </div>
         </div>
 
-        
+
         <div class="profile-bio">
             <p>{{ profile.bio_text }}</p>
         </div>

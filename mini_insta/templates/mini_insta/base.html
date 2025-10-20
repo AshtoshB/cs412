@@ -28,13 +28,16 @@
     <footer class="nav-footer">
 
         <div class="nav-container">
-            
-                <li><a href="{% url 'show_all' %}">All Profiles</a></li>
-
                 {% if profile %}
+                    <a href="{% url 'show_feed' pk=profile.pk %}">Home (Feed)</a>
+                    <a href="{% url 'search' pk=profile.pk %}">Search</a>
+                    <a href="{% url 'show_all' %}">All Profiles</a>
+                    <a href="{% url 'profile' pk=profile.pk %}">Profile</a>
                     <a href="{% url 'create_post' pk=profile.pk %}">Create Post</a>
+                {% else %}
+                    <a href="{% url 'show_all' %}">All Profiles</a>
                 {% endif %}
-                        
+
         </div>
 
     </footer>

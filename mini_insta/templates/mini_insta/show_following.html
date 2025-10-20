@@ -1,0 +1,46 @@
+<!--file: templates/mini_insta/show_following.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the page that displays who a profile is following -->
+
+{% extends 'mini_insta/base.html' %}
+    {% block content %}
+
+    <div class="profile-page">
+
+        <div class="profile-header">
+            <img class="profile-image-large" src="{{ profile.profile_image_url }}" alt="{{ profile.display_name }}'s profile picture">
+
+            <div class="profile-header-info">
+                <h1 class="profile-name">{{ profile.display_name }}</h1>
+                <p class="profile-username">@{{ profile.username }}</p>
+            </div>
+        </div>
+
+        <div class="following-section">
+            <h2>Following</h2>
+
+            <div class="profiles-grid">
+                {% for followed_profile in profile.get_following %}
+                    <a href="{% url 'profile' pk=followed_profile.pk %}" class="profile-card">
+                        <img class="profile-image" src="{{ followed_profile.profile_image_url }}" alt="{{ followed_profile.display_name }}'s profile picture">
+                        <div class="profile-info">
+                            <h3 class="display-name">{{ followed_profile.display_name }}</h3>
+                            <p class="username">@{{ followed_profile.username }}</p>
+                        </div>
+                    </a>
+
+                {% empty %}
+                    <p>Not following anyone yet.</p>
+
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Back to profile button -->
+        <a class="profile-update-button" href="{% url 'profile' pk=profile.pk %}">
+            Back to Profile
+        </a>
+
+    </div>
+
+{% endblock%}

@@ -24,14 +24,30 @@
     text-decoration: none;
 }
 
-.nav-footer a:hover {
-    text-decoration: underline;
+.nav-footer a {
+    color: white !important;
+    text-decoration: none;
+    margin: 0 1.5rem;
+    display: inline-block;
 }
 
+.nav-footer a:link {
+    color: white !important;
+    text-decoration: none;
+}
 
 .nav-footer a:visited {
-    color: white;          
-    text-decoration: none;        
+    color: white !important;
+    text-decoration: none;
+}
+
+.nav-footer a:hover {
+    text-decoration: underline;
+    color: white !important;
+}
+
+.nav-footer a:active {
+    color: white !important;
 }
 
 
@@ -187,6 +203,37 @@ body{
     margin-top: 0.5rem;
 }
 
+.profile-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.2s ease;
+}
+
+.stat-item:hover {
+    transform: scale(1.05);
+}
+
+.stat-count {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #222;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 0.25rem;
+}
+
 .profile-bio {
     margin-top: 2rem;
     font-size: 1rem;
@@ -257,7 +304,7 @@ body{
 
 /* ==== Post Detail (show_post.html) page ==== */
 
-.post-detail {
+.post-detail {  
     max-width: auto;
     margin: 3rem auto;
     padding: 2rem;
@@ -293,6 +340,76 @@ body{
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
+}
+
+/* ==== Post Comments Section ==== */
+.post-comments {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd;
+}
+
+/* ==== Post Likes Section ==== */
+.post-likes {
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.post-likes p {
+    margin: 0.5rem 0;
+}
+
+.post-comments h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.comment {
+    margin-bottom: 0.5rem;
+}
+
+.comment p {
+    margin: 0;
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* ==== Create Post (create_post_form.html) Page ==== */
+.create-post-page {
+    max-width: 60%;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.create-post-page h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.file-input {
+    padding: 0.5rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.file-input:hover {
+    border-color: #333;
 }
 
 /* ==== Update Profile (update_profile_form.html) Page ==== */
@@ -360,6 +477,420 @@ body{
     background-color: #8b8989;
     border:solid;
     border-color: purple;
+}
+
+/* ==== Followers and Following Sections ==== */
+.followers-section,
+.following-section {
+    margin-top: 2rem;
+}
+
+.followers-section h2,
+.following-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* ==== Feed Page (show_feed.html) ==== */
+.feed-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.feed-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #ddd;
+}
+
+.feed-header h1 {
+    font-size: 1.8rem;
+    color: #222;
+    margin: 0;
+}
+
+.profile-link-button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.profile-link-button:hover {
+    background-color: #555;
+}
+
+.feed-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.feed-post {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.feed-post-header {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.feed-post-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.feed-profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.feed-profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.feed-profile-name {
+    margin: 0;
+    font-weight: bold;
+    color: #222;
+    font-size: 0.95rem;
+}
+
+.feed-profile-username {
+    margin: 0;
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.feed-post-photo {
+    width: 100%;
+    background-color: #f5f5f5;
+}
+
+.feed-post-photo img {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: cover;
+    display: block;
+}
+
+.feed-post-content {
+    padding: 1rem;
+}
+
+.feed-post-likes {
+    margin-bottom: 0.75rem;
+}
+
+.feed-post-likes p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.feed-post-caption {
+    margin-bottom: 0.75rem;
+}
+
+.feed-post-caption p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #222;
+    line-height: 1.5;
+}
+
+.feed-post-comments {
+    margin-bottom: 0.75rem;
+}
+
+.feed-post-comments p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.view-all-comments {
+    color: #888;
+    font-size: 0.85rem;
+    text-decoration: none;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.view-all-comments:hover {
+    color: #555;
+}
+
+.feed-post-timestamp {
+    border-top: 1px solid #eee;
+    padding-top: 0.5rem;
+}
+
+.feed-post-timestamp p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.feed-empty {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.feed-empty p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+/* ==== Search Page (search.html) ==== */
+.search-page {
+    max-width: 60%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.search-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.search-header h1 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 0.5rem;
+}
+
+.search-header p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.search-form-container {
+    margin-bottom: 2rem;
+}
+
+.search-form {
+    margin-bottom: 2rem;
+}
+
+.search-input-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: #333;
+}
+
+.search-button {
+    background-color: black;
+    color: #fff;
+    padding: 0.6rem 1.4rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #585656;
+    border: solid;
+    border-color: purple;
+}
+
+
+/* ==== Search Results Page (search_results.html) ==== */
+.search-results-page {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.search-results-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.search-results-header h1 {
+    font-size: 2rem;
+    color: black;
+    margin-bottom: 0.5rem;
+}
+
+.search-results-header p {
+    font-size: 1.1rem;
+    color: black;
+}
+
+.search-again-container {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.search-again-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-section {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.search-section h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #ddd;
+}
+
+.no-results {
+    text-align: center;
+    color: #999;
+    font-size: 1.1rem;
+    padding: 2rem;
+}
+
+/* Search Results - Profiles Grid */
+.bio-preview {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+}
+
+/* Search Results - Posts Grid */
+.search-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.search-post-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    transition: transform 0.2s ease;
+}
+
+.search-post-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.search-post-author {
+    padding: 1rem;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.author-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.author-image {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-info {
+    flex: 1;
+}
+
+.author-name {
+    margin: 0;
+    font-weight: bold;
+    color: #222;
+    font-size: 0.9rem;
+}
+
+.author-username {
+    margin: 0;
+    color: #888;
+    font-size: 0.8rem;
+}
+
+.search-post-link {
+    display: block;
+}
+
+.search-post-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.search-post-info {
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.search-post-caption {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.4;
+}
+
+.search-post-likes {
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.search-post-comments {
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.back-to-search {
+    text-align: center;
+    margin-top: 2rem;
 }
 
 /* ==== Update Post(update_post_form.html) Page ==== */

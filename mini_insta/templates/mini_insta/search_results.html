@@ -1,0 +1,106 @@
+<!--file: templates/mini_insta/search_results.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the search results page displaying matching profiles and posts -->
+
+{% extends 'mini_insta/base.html' %}
+{% block content %}
+
+    <div class="search-results-page">
+        <div class="search-results-header">
+            <h1>Search Results</h1>
+            <p>Results for: <strong>"{{ query }}"</strong></p>
+        </div>
+
+        <!-- Search again form -->
+        <div class="search-again-container">
+            <form action="{% url 'search' pk=profile.pk %}" method="get" class="search-again-form">
+                <input
+                    type="text"
+                    name="query"
+                    placeholder="Search again..."
+                    class="search-input"
+                    value="{{ query }}"
+                >
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </div>
+
+        <!-- Profiles Results -->
+        <div class="search-section">
+            <h2>Profiles ({{ profiles.count }} result{% if profiles.count != 1 %}s{% endif %})</h2>
+
+            {% if profiles %}
+                <div class="profiles-grid">
+                
+                    {% for profile_result in profiles %}
+                
+                        <a href="{% url 'profile' pk=profile_result.pk %}" class="profile-card">
+                            <img class="profile-image" src="{{ profile_result.profile_image_url }}" alt="{{ profile_result.display_name }}'s profile picture">
+                    
+                            <div class="profile-info">
+                              
+                                <h3 class="display-name">{{ profile_result.display_name }}</h3>
+                                <p class="username">@{{ profile_result.username }}</p>
+                              
+                                {% if profile_result.bio_text %}
+                                    <p class="bio-preview">{{ profile_result.bio_text|truncatewords:15 }}</p>
+                                {% endif %}
+                            
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            
+            {% else %}
+                <p class="no-results">No profiles found matching "{{ query }}"</p>
+            {% endif %}
+        </div>
+
+        <!-- Posts Results -->
+        <div class="search-section">
+            <h2>Posts ({{ posts.count }} result{% if posts.count != 1 %}s{% endif %})</h2>
+
+            {% if posts %}
+                <div class="search-posts-grid">
+                    
+                    {% for post in posts %}
+                        <div class="search-post-card">
+                           
+                            <!-- Post author -->
+                            <div class="search-post-author">
+                                <a href="{% url 'profile' pk=post.profile.pk %}" class="author-link">
+                                    <img src="{{ post.profile.profile_image_url }}" alt="{{ post.profile.display_name }}" class="author-image">
+                                    <div class="author-info">
+                                        <p class="author-name">{{ post.profile.display_name }}</p>
+                                        <p class="author-username">@{{ post.profile.username }}</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- Post image -->
+                            <a href="{% url 'post_detail' pk=post.pk %}" class="search-post-link">
+                                {% if post.get_all_photos.first %}
+                                    <img src="{{ post.get_all_photos.first.get_image_url }}" alt="Post photo" class="search-post-image">
+                                {% else %}
+                                    <img src="https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png" alt="No Image" class="search-post-image">
+                                {% endif %}
+                            </a>
+
+                            <!-- Post info -->
+                            <div class="search-post-info">
+                                <p class="search-post-caption">{{ post.caption|truncatewords:20 }}</p>
+                                <p class="search-post-likes">{{ post.get_likes_display_text }}</p>
+                                <p class="search-post-comments">{{ post.get_all_comments.count }} comment{% if post.get_all_comments.count != 1 %}s{% endif %}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-results">No posts found matching "{{ query }}"</p>
+            {% endif %}
+        </div>
+
+        
+    </div>
+
+{% endblock %}

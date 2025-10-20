@@ -1,0 +1,25 @@
+<!--file: templates/mini_insta/search.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the search form page for searching profiles and posts -->
+
+{% extends 'mini_insta/base.html' %}
+{% block content %}
+
+    <div class="search-page">
+        <div class="search-header">
+            <h1>Search Mini Insta</h1>
+            <p>Search for profiles and posts</p>
+        </div>
+
+        <div class="search-form-container">
+            <form method="GET" action="{% url 'search' pk=profile.pk %}"  class="search-form">
+                <div class="search-input-group">
+                    <input type="text" id="query" name="query" placeholder="Search for users or posts..." class="search-input" required>
+                    <button type="submit" class="search-button">Search</button>
+                </div>
+            </form>
+
+        
+    </div>
+
+{% endblock %}

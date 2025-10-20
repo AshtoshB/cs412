@@ -8,6 +8,16 @@
     <div class="post-detail">
         <h2>Post Details</h2>
 
+        <div class="post-photos">
+            {% for photo in post.get_all_photos %}
+                <img src="{{ photo.get_image_url }}" alt="Photo for post" width="400" />
+
+            {% empty %}
+                <p>No photos for this post.</p>
+
+            {% endfor %}
+        </div>
+
         <p><strong>Caption:</strong> {{ post.caption }}</p>
         <p><strong>Posted on:</strong> {{ post.timestamp}}</p>
 
@@ -16,15 +26,21 @@
             <a href="{% url 'delete_post' pk=post.pk %}" class="delete-button">Delete</a>
         </div>
 
-        
-        <div class="post-photos">
+        <!-- Comments section -->
+        <div class="post-comments">
 
-            {% for photo in post.get_all_photos %}
-                <img src="{{ photo.get_image_url }}" alt="Photo for post" width="400" />
-            
+            <!-- Like count -->
+            <div class="post-likes">
+                <p>{{ post.get_likes_display_text }}</p>
+            </div>
+
+            <h3>Comments</h3>
+            {% for comment in post.get_all_comments %}
+                <div class="comment">
+                    <p><strong>@{{ comment.profile.username }}:</strong> {{ comment.text }}</p>
+                </div>
             {% empty %}
-                <p>No photos for this post.</p>
-            
+                <p>No comments yet.</p>
             {% endfor %}
         </div>
     </div>

@@ -1,0 +1,88 @@
+<!--file: templates/mini_insta/show_feed.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the page that shows the post feed for a profile -->
+
+{% extends 'mini_insta/base.html' %}
+{% block content %}
+
+    <div class="feed-container">
+        <div class="feed-header">
+            
+            <h1>Feed for {{ profile.display_name }}</h1>
+            <a href="{% url 'profile' pk=profile.pk %}" class="profile-link-button">View Profile</a>
+        </div>
+
+        <div class="feed-posts">
+
+            {% for post in posts %}
+                <div class="feed-post">
+            
+                    <!-- Post header with profile info -->
+                    <div class="feed-post-header">
+                        
+                        <a href="{% url 'profile' pk=post.profile.pk %}" class="feed-post-profile">
+                            <img src="{{ post.profile.profile_image_url }}" alt="{{ post.profile.display_name }}" class="feed-profile-image">
+            
+                            <div class="feed-profile-info">
+                                <p class="feed-profile-name">{{ post.profile.display_name }}</p>
+                                <p class="feed-profile-username">@{{ post.profile.username }}</p>
+                            </div>
+            
+                        </a>
+                    </div>
+
+                    <!-- Post photo -->
+                    <div class="feed-post-photo">
+                        {% if post.get_all_photos.first %}
+                            <a href="{% url 'post_detail' pk=post.pk %}">
+                                <img src="{{ post.get_all_photos.first.get_image_url }}" alt="Post photo">
+                            </a>
+                        {% else %}
+                            <a href="{% url 'post_detail' pk=post.pk %}">
+                                <img src="https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png" alt="No Image">
+                            </a>
+                        {% endif %}
+                    </div>
+
+                    <!-- Post content -->
+                    <div class="feed-post-content">
+                        <!-- Likes -->
+                        <div class="feed-post-likes">
+                            <p>{{ post.get_likes_display_text }}</p>
+                        </div>
+
+                        <!-- Caption -->
+                        <div class="feed-post-caption">
+                            <p><strong>@{{ post.profile.username }}</strong> {{ post.caption }}</p>
+                        </div>
+
+                        <!-- Comments -->
+                        <div class="feed-post-comments">
+                            {% for comment in post.get_all_comments|slice:":3" %}
+                                <p><strong>@{{ comment.profile.username }}:</strong> {{ comment.text }}</p>
+                            {% endfor %}
+
+                            {% if post.get_all_comments.count > 3 %}
+                                <a href="{% url 'post_detail' pk=post.pk %}" class="view-all-comments">
+                                    View all {{ post.get_all_comments.count }} comments
+                                </a>
+                            {% endif %}
+                        </div>
+
+                        <!-- Timestamp -->
+                        <div class="feed-post-timestamp">
+                            <p>{{ post.timestamp|timesince }} ago</p>
+                        </div>
+                    </div>
+                </div>
+
+            {% empty %}
+                <div class="feed-empty">
+                    <p>No posts in your feed yet. Follow some profiles to see their posts!</p>
+                    <a href="{% url 'show_all' %}" class="profile-update-button">Browse Profiles</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

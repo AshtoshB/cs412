@@ -121,15 +121,97 @@ class UpdatePostView(UpdateView):
     model = Post
     form_class = UpdatePostForm
     template_name = "mini_insta/update_post_form.html"
-    
+
     def get_context_data(self, **kwargs):
         '''Add the Post and Profile objects to the context data'''
         context = super().get_context_data(**kwargs)
-        
+
         # the Post object being updated
         context['post'] = self.object
-        
+
         # the Profile of the user who made the Post
         context['profile'] = self.object.profile
-        
+
+        return context
+
+class ShowFollowersDetailView(DetailView):
+    '''Display a profile's followers'''
+
+    model = Profile
+    template_name = "mini_insta/show_followers.html"
+    context_object_name = "profile"
+
+class ShowFollowingDetailView(DetailView):
+    '''Display who a profile is following'''
+
+    model = Profile
+    template_name = "mini_insta/show_following.html"
+    context_object_name = "profile"
+
+class PostFeedListView(DetailView):
+    '''Display the post feed for a profile - shows posts from profiles they follow'''
+
+    model = Profile
+    template_name = "mini_insta/show_feed.html"
+    context_object_name = "profile"
+
+    def get_context_data(self, **kwargs):
+        '''Add the post feed to the context'''
+        context = super().get_context_data(**kwargs)
+
+        # Get the post feed for this profile
+        context['posts'] = self.object.get_post_feed()
+
+        return context
+
+class SearchView(ListView):
+    '''Display search form and search results for profiles and posts'''
+
+    template_name = "mini_insta/search_results.html"
+    context_object_name = "posts"
+
+    def dispatch(self, request, *args, **kwargs):
+        '''Handle the request - show search form if no query, otherwise show results'''
+
+        # Check if query parameter is present
+        if 'query' not in self.request.GET or not self.request.GET['query']:
+            
+            # No query, show the search form
+            profile = Profile.objects.get(pk=self.kwargs['pk'])
+            return render(request, 'mini_insta/search.html', {'profile': profile})
+
+        # Query present, continue with normal ListView behavior
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        '''Return Posts that match the search query'''
+
+        # Get the query from the GET parameters
+        query = self.request.GET.get('query', '')
+
+        # Search for posts where the caption contains the query
+        posts = Post.objects.filter(caption__icontains=query)
+
+        return posts
+
+    def get_context_data(self, **kwargs):
+        '''Add profile, query, and matching profiles to context'''
+        context = super().get_context_data(**kwargs)
+
+        # Get the profile 
+        profile = Profile.objects.get(pk=self.kwargs['pk'])
+        context['profile'] = profile
+
+        # Get the query
+        query = self.request.GET.get('query', '')
+        context['query'] = query
+
+        # Get matching profiles (search in username, display_name, or bio_text)
+        matching_username = Profile.objects.filter(username__icontains=query)
+        matching_name =  Profile.objects.filter(display_name__icontains=query)
+        matching_bio = Profile.objects.filter(bio_text__icontains=query)
+
+        matching_profiles = matching_username | matching_name | matching_bio
+        context['profiles'] = matching_profiles
+
         return context

@@ -1,0 +1,46 @@
+<!--file: templates/mini_insta/show_followers.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the page that displays a profile's followers -->
+
+{% extends 'mini_insta/base.html' %}
+    {% block content %}
+
+    <div class="profile-page">
+
+        <div class="profile-header">
+            <img class="profile-image-large" src="{{ profile.profile_image_url }}" alt="{{ profile.display_name }}'s profile picture">
+
+            <div class="profile-header-info">
+                <h1 class="profile-name">{{ profile.display_name }}</h1>
+                <p class="profile-username">@{{ profile.username }}</p>
+            </div>
+        </div>
+
+        <div class="followers-section">
+            <h2>Followers</h2>
+
+            <div class="profiles-grid">
+                {% for follower in profile.get_followers %}
+                    <a href="{% url 'profile' pk=follower.pk %}" class="profile-card">
+                        <img class="profile-image" src="{{ follower.profile_image_url }}" alt="{{ follower.display_name }}'s profile picture">
+                        <div class="profile-info">
+                            <h3 class="display-name">{{ follower.display_name }}</h3>
+                            <p class="username">@{{ follower.username }}</p>
+                        </div>
+                    </a>
+
+                {% empty %}
+                    <p>No followers yet.</p>
+
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Back to profile button -->
+        <a class="profile-update-button" href="{% url 'profile' pk=profile.pk %}">
+            Back to Profile
+        </a>
+
+    </div>
+
+{% endblock%}

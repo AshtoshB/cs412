@@ -5,23 +5,31 @@
 {% extends 'mini_insta/base.html' %}
     {% block content %}
 
-    <h1>Create a new Post</h1>
+    <div class="create-post-page">
+        <h1>Create a New Post</h1>
+        <p class="form-subtitle">Share a moment with your followers</p>
 
-    <!-- display the HTML form-->
-     <form  action="{% url 'create_post' pk=profile.pk %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
+        <!-- display the HTML form-->
+        <form action="{% url 'create_post' pk=profile.pk %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
 
-            <tr>
-                <td><label for="image_url">Image URL:</label></td>
-                <td><input type="file" name="image_file" id="image_file" multiple></td>
-            </tr>
-        </table>
-        
+            <div class="form-table">
+                <table>
+                    {{ form.as_table }}
 
-        <input type="submit" name="submit" value="Submit" />
-        <a href="{% url 'profile' pk=profile.pk %}"><button type="button">Cancel</button></a>
+                    <tr>
+                        <td><label for="image_file">Upload Images:</label></td>
+                        <td><input type="file" name="image_file" id="image_file" multiple class="file-input"></td>
+                    </tr>
+                </table>
+            </div>
 
-    </form>
+            <div class="form-actions">
+                <button type="submit" class="update-button">Create Post</button>
+                <a href="{% url 'profile' pk=profile.pk %}" class="cancel-button">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+
 {% endblock %}
