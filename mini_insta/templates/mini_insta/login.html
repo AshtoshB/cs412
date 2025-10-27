@@ -1,0 +1,20 @@
+<!--file: templates/mini_insta/login.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: login page for mini_insta-->
+
+{% extends 'mini_insta/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Login to Mini Insta</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{% url 'show_all' %}">
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+{% endblock %}

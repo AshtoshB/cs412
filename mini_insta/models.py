@@ -4,12 +4,14 @@
 
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Profile(models.Model):
     '''Encapsulates the data of an indiviual user'''
-    
+
     #define the data attributes of Profile model
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     username = models.TextField(blank=True)
     display_name = models.CharField(max_length=90)
     profile_image_url = models.TextField(blank=True)

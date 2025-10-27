@@ -15,6 +15,19 @@
 
             <div class="nav-container">
                 <h1>Mini Insta</h1>
+                {% if user.is_authenticated %}
+                    <p>Logged in as: <strong>{{ user.username }}</strong>
+                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-button">Logout</button>
+                    </form>
+                    </p>
+                {% else %}
+                    <p>Not logged in
+                    <a href="{% url 'login' %}" class="auth-button">Login</a>
+                    <a href="{% url 'create_profile' %}" class="auth-button">Register</a>
+                    </p>
+                {% endif %}
             </div>
 
         </header>
@@ -28,14 +41,15 @@
     <footer class="nav-footer">
 
         <div class="nav-container">
-                {% if profile %}
-                    <a href="{% url 'show_feed' pk=profile.pk %}">Home (Feed)</a>
-                    <a href="{% url 'search' pk=profile.pk %}">Search</a>
-                    <a href="{% url 'show_all' %}">All Profiles</a>
-                    <a href="{% url 'profile' pk=profile.pk %}">Profile</a>
-                    <a href="{% url 'create_post' pk=profile.pk %}">Create Post</a>
+                <a href="{% url 'show_all' %}">All Profiles</a>
+
+                {% if user.is_authenticated %}
+                    <a href="{% url 'show_feed' %}">Home (Feed)</a>
+                    <a href="{% url 'search' %}">Search</a>
+                    <a href="{% url 'my_profile' %}">My Profile</a>
+                    <a href="{% url 'create_post' %}">Create Post</a>
                 {% else %}
-                    <a href="{% url 'show_all' %}">All Profiles</a>
+                    <a href="{% url 'create_profile' %}">Register</a>
                 {% endif %}
 
         </div>

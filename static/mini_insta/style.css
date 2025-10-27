@@ -50,6 +50,44 @@
     color: white !important;
 }
 
+/* Authentication buttons in header */
+.auth-button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+.auth-button:hover {
+    background-color: #8b8989;
+    border: solid;
+    border-color: purple;
+}
+
+/* Logout button - styled like other auth buttons */
+.logout-button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+.logout-button:hover {
+    background-color: #8b8989;
+    border: solid;
+    border-color: purple;
+}
+
 
 /* ==== Show All (show_all_profiles.html) page ==== */
 body{
@@ -258,6 +296,36 @@ body{
     border:solid;
     border-color:purple;
 }
+
+/* Follow/Unfollow button */
+.follow-button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.6rem 1.4rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    margin-left: 1rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.follow-button:hover {
+    background-color: #8b8989;
+    border: solid;
+    border-color: purple;
+}
+
+.follow-button.following {
+    background-color: #666;
+}
+
+.follow-button.following:hover {
+    background-color: #999;
+    border: solid;
+    border-color: purple;
+}
+
 /* ==== Profile Posts Section ==== */
 
 .profile-posts {
@@ -342,6 +410,36 @@ body{
     transition: transform 0.3s ease;
 }
 
+/* Like/Unlike button */
+.like-button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.6rem 1.4rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.like-button:hover {
+    background-color: #8b8989;
+    border: solid;
+    border-color: purple;
+}
+
+.like-button.liked {
+    background-color: #e74c3c;
+}
+
+.like-button.liked:hover {
+    background-color: #c0392b;
+    border: solid;
+    border-color: purple;
+}
+
 /* ==== Post Comments Section ==== */
 .post-comments {
     margin-top: 2rem;
@@ -376,6 +474,57 @@ body{
     font-size: 1rem;
     color: #444;
     line-height: 1.6;
+}
+
+/* Add comment form */
+.add-comment {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.add-comment h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: #333;
+}
+
+.add-comment form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.add-comment textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.add-comment textarea:focus {
+    outline: none;
+    border-color: #333;
+}
+
+.comment-submit-button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.6rem 1.4rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.comment-submit-button:hover {
+    background-color: #8b8989;
+    border: solid;
+    border-color: purple;
 }
 
 /* ==== Create Post (create_post_form.html) Page ==== */
@@ -635,6 +784,43 @@ body{
 
 .view-all-comments:hover {
     color: #555;
+}
+
+.feed-add-comment {
+    padding: 0.75rem 0;
+    border-top: 1px solid #eee;
+}
+
+.feed-add-comment form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.feed-add-comment input[type="text"] {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.feed-add-comment input[type="text"]:focus {
+    outline: none;
+    border-color: #333;
+}
+
+.feed-add-comment button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.feed-add-comment button:hover {
+    background-color: #555;
 }
 
 .feed-post-timestamp {

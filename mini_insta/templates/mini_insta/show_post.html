@@ -21,10 +21,26 @@
         <p><strong>Caption:</strong> {{ post.caption }}</p>
         <p><strong>Posted on:</strong> {{ post.timestamp}}</p>
 
-         <div class="post-actions">
+        <!-- Only show update/delete buttons if this is the user's own post -->
+        {% if user.is_authenticated and post.profile.user == user %}
+        <div class="post-actions">
             <a href="{% url 'update_post' pk=post.pk %}" class="update-button">Update</a>
             <a href="{% url 'delete_post' pk=post.pk %}" class="delete-button">Delete</a>
         </div>
+        {% endif %}
+
+        <!-- Like/Unlike button - only show if not the user's own post -->
+        {% if user.is_authenticated and post.profile.user != user %}
+            {% if has_liked %}
+                <a class="like-button liked" href="{% url 'delete_like' pk=post.pk %}">
+                    Unlike
+                </a>
+            {% else %}
+                <a class="like-button" href="{% url 'like' pk=post.pk %}">
+                    Like
+                </a>
+            {% endif %}
+        {% endif %}
 
         <!-- Comments section -->
         <div class="post-comments">
@@ -42,6 +58,18 @@
             {% empty %}
                 <p>No comments yet.</p>
             {% endfor %}
+
+            <!-- Add comment form - only show if user is authenticated -->
+            {% if user.is_authenticated %}
+            <div class="add-comment">
+                <h4>Add a Comment</h4>
+                <form method="POST" action="{% url 'create_comment' pk=post.pk %}">
+                    {% csrf_token %}
+                    <textarea name="text" rows="2" placeholder="Add a comment..." required></textarea>
+                    <button type="submit" class="comment-submit-button">Post Comment</button>
+                </form>
+            </div>
+            {% endif %}
         </div>
     </div>
 

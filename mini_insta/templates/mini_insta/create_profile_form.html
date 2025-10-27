@@ -1,0 +1,37 @@
+<!--file: templates/mini_insta/create_profile_form.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the page to create a new Profile with User registration-->
+
+{% extends 'mini_insta/base.html' %}
+{% block content %}
+
+    <div class="update-profile-page">
+        <h1>Create Profile</h1>
+        
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <h2>User Account Information</h2>
+            
+            <div class="form-table">
+                <table>
+                    {{ user_form.as_table }}
+                </table>
+            </div>
+
+            <h2>Profile Information</h2>
+            <div class="form-table">
+                <table>
+                    {{ form.as_table }}
+                </table>
+            </div>
+
+            <div class="form-actions">
+                <input type="submit" value="Create Profile" class="update-button" />
+                <a href="{% url 'show_all' %}" class="cancel-button">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

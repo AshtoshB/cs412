@@ -30,3 +30,24 @@ class UpdatePostForm(forms.ModelForm):
         '''associate this form with the Post model.'''
         model = Post
         fields = ['caption']
+
+
+class CreateProfileForm(forms.ModelForm):
+    '''A form to create a new Profile in the database.'''
+
+    class Meta:
+        '''associate this form with the Profile model.'''
+        model = Profile
+        fields = ['username', 'display_name', 'bio_text', 'profile_image_url']
+
+
+class CreateCommentForm(forms.ModelForm):
+    '''A form to create a new Comment in the database.'''
+
+    class Meta:
+        '''associate this form with the Comment model.'''
+        model = Comment
+        fields = ['text']
+        widgets = {
+            'text': forms.Textarea(attrs={'rows': 2, 'placeholder': 'Add a comment...'}),
+        }

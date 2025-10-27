@@ -69,6 +69,15 @@
                             {% endif %}
                         </div>
 
+                        <!-- Add comment form in feed -->
+                        <div class="feed-add-comment">
+                            <form method="POST" action="{% url 'create_comment' pk=post.pk %}">
+                                {% csrf_token %}
+                                <input type="text" name="text" placeholder="Add a comment..." required>
+                                <button type="submit">Post</button>
+                            </form>
+                        </div>
+
                         <!-- Timestamp -->
                         <div class="feed-post-timestamp">
                             <p>{{ post.timestamp|timesince }} ago</p>

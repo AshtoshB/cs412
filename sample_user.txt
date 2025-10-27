@@ -1,0 +1,7 @@
+Existin profile user:
+username: TomTheSpider
+password: SpiderOnward123
+
+Created new profile user:
+username: testPerson
+password: TestUser123

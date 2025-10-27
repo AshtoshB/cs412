@@ -1,0 +1,16 @@
+<!--file: templates/mini_insta/logout.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: logout confirmation page for mini_insta-->
+
+{% extends 'mini_insta/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Logged Out</h2>
+    <p>You have been successfully logged out.</p>
+    <p><a href="{% url 'login' %}">Login again</a></p>
+    <p><a href="{% url 'show_all' %}">View all profiles</a></p>
+</div>
+
+{% endblock %}

@@ -31,14 +31,29 @@
         <div class="profile-bio">
             <p>{{ profile.bio_text }}</p>
         </div>
-        
-        <!-- Update profile button -->
-        <a class="profile-update-button" href="{% url 'update_profile' pk=profile.pk %}">
+
+        <!-- Update profile button - only show if this is the user's own profile -->
+        {% if user.is_authenticated and profile.user == user %}
+        <a class="profile-update-button" href="{% url 'update_profile' %}">
             Update Profile
         </a>
-    
+        {% endif %}
 
-        
+        <!-- Follow/Unfollow button - only show if viewing another user's profile -->
+        {% if user.is_authenticated and profile.user != user %}
+            {% if is_following %}
+                <a class="follow-button following" href="{% url 'delete_follow' pk=profile.pk %}">
+                    Unfollow
+                </a>
+            {% else %}
+                <a class="follow-button" href="{% url 'follow' pk=profile.pk %}">
+                    Follow
+                </a>
+            {% endif %}
+        {% endif %}
+
+
+
         <div class="profile-posts">
             
             <h2>Posts</h2>
