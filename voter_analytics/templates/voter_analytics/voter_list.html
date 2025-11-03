@@ -23,7 +23,7 @@
         <select name="min_year" id="min_year">
             <option value="">Any</option>
             {% for year in birth_years %}
-                <option value="{{ year }}" {% if selected_min_year == year|stringformat:"s" %}selected{% endif %}>{{ year }}</option>
+                <option value="{{ year }}" {% if selected_min_year == year %}selected{% endif %}>{{ year }}</option>
             {% endfor %}
         </select>
 
@@ -31,7 +31,7 @@
         <select name="max_year" id="max_year">
             <option value="">Any</option>
             {% for year in birth_years %}
-                <option value="{{ year }}" {% if selected_max_year == year|stringformat:"s" %}selected{% endif %}>{{ year }}</option>
+                <option value="{{ year }}" {% if selected_max_year == year %}selected{% endif %}>{{ year }}</option>
             {% endfor %}
         </select>
 
@@ -39,26 +39,26 @@
         <select name="voter_score" id="voter_score">
             <option value="">Any</option>
             {% for score in voter_scores %}
-                <option value="{{ score }}" {% if selected_voter_score == score|stringformat:"s" %}selected{% endif %}>{{ score }}</option>
+                <option value="{{ score }}" {% if selected_voter_score == score %}selected{% endif %}>{{ score }}</option>
             {% endfor %}
         </select>
 
         <br><br>
 
         <input type="checkbox" name="v20state" id="v20state" value="on" {% if selected_v20state %}checked{% endif %}>
-        <label for="v20state">Voted in 2020 State</label>
+        <label for="v20state">v20state</label>
 
         <input type="checkbox" name="v21town" id="v21town" value="on" {% if selected_v21town %}checked{% endif %}>
-        <label for="v21town">Voted in 2021 Town</label>
+        <label for="v21town">v21town</label>
 
         <input type="checkbox" name="v21primary" id="v21primary" value="on" {% if selected_v21primary %}checked{% endif %}>
-        <label for="v21primary">Voted in 2021 Primary</label>
+        <label for="v21primary">v21primary</label>
 
         <input type="checkbox" name="v22general" id="v22general" value="on" {% if selected_v22general %}checked{% endif %}>
-        <label for="v22general">Voted in 2022 General</label>
+        <label for="v22general">v22general</label>
 
         <input type="checkbox" name="v23town" id="v23town" value="on" {% if selected_v23town %}checked{% endif %}>
-        <label for="v23town">Voted in 2023 Town</label>
+        <label for="v23town">v23town</label>
 
         <br><br>
 
@@ -84,6 +84,7 @@
                 <th>Actions</th>
             </tr>
         </thead>
+
         <tbody>
             {% for voter in voters %}
             <tr>
@@ -97,10 +98,11 @@
             </tr>
             {% empty %}
             <tr>
-                <td colspan="7">No voters found matching the criteria.</td>
+                <td>No voters found matching the criteria.</td>
             </tr>
             {% endfor %}
         </tbody>
+        
     </table>
 
     <!-- Pagination -->

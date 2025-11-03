@@ -6,7 +6,8 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    
+
     path('', VoterListView.as_view(), name='voters'), # List view to shows all voters with filtering
     path('voter/<int:pk>', VoterDetailView.as_view(), name='voter'), # Detail view to shows a single voter
+    path('graphs', GraphsView.as_view(), name='graphs'), # Graphs view to show data visualizations
 ]

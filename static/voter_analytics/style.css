@@ -2,17 +2,25 @@
 /* author: Ashtosh Bhandari ashtosh@bu.edu */
 /* description: Styles for voter_analytics application */
 
+/* Color Palette:
+   PALE GOLD: #EEE8AA
+   DEER: #BA8C63
+   ARTICHOKE: #8F9779
+   DARK BROWN-TANGELO: #8B5A3C
+   STRAW: #E4D96F
+*/
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: #EEE8AA; /* PALE GOLD */
 }
 
 /* Navigation Header */
 .nav-header {
-    background-color: #007bff;
-    color: white;
+    background-color: #8B5A3C; /* DARK BROWN-TANGELO */
+    color: #EEE8AA; /* PALE GOLD */
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -20,17 +28,32 @@ body {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav-header h1 {
     margin: 0;
-    color: white;
+    color: #E4D96F; /* STRAW */
+}
+
+.nav-header nav a {
+    color: #E4D96F; /* STRAW */
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.nav-header nav a:hover {
+    text-decoration: underline;
+    color: #EEE8AA; /* PALE GOLD */
 }
 
 /* Navigation Footer */
 .nav-footer {
-    background-color: #343a40;
-    color: white;
+    background-color: #8F9779; /* ARTICHOKE */
+    color: #EEE8AA; /* PALE GOLD */
     padding: 20px;
     margin-top: 40px;
     text-align: center;
@@ -103,7 +126,7 @@ h1.page-title {
 }
 
 button {
-    background-color: #007bff;
+    background-color: #BA8C63; /* DEER */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -114,16 +137,16 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #8B5A3C; /* DARK BROWN-TANGELO */
 }
 
 .clear-btn {
-    background-color: #6c757d;
+    background-color: #8F9779; /* ARTICHOKE */
     margin-left: 10px;
 }
 
 .clear-btn:hover {
-    background-color: #545b62;
+    background-color: #6d7a5e;
 }
 
 table {
@@ -140,8 +163,8 @@ th, td {
 }
 
 th {
-    background-color: #007bff;
-    color: white;
+    background-color: #8B5A3C; /* DARK BROWN-TANGELO */
+    color: #E4D96F; /* STRAW */
     font-weight: bold;
 }
 
@@ -155,35 +178,37 @@ tr:hover {
 }
 
 .pagination a {
-    color: #007bff;
+    color: #8B5A3C; /* DARK BROWN-TANGELO */
     padding: 8px 16px;
     text-decoration: none;
-    border: 1px solid #ddd;
+    border: 1px solid #BA8C63; /* DEER */
     margin: 0 4px;
     border-radius: 4px;
 }
 
 .pagination a:hover {
-    background-color: #007bff;
+    background-color: #BA8C63; /* DEER */
     color: white;
 }
 
 .pagination .current {
-    background-color: #007bff;
-    color: white;
+    background-color: #8B5A3C; /* DARK BROWN-TANGELO */
+    color: #E4D96F; /* STRAW */
     padding: 8px 16px;
-    border: 1px solid #007bff;
+    border: 1px solid #8B5A3C;
     margin: 0 4px;
     border-radius: 4px;
 }
 
 .voter-link {
-    color: #007bff;
+    color: #8B5A3C; /* DARK BROWN-TANGELO */
     text-decoration: none;
+    font-weight: bold;
 }
 
 .voter-link:hover {
     text-decoration: underline;
+    color: #BA8C63; /* DEER */
 }
 
 .result-count {
@@ -207,8 +232,8 @@ tr:hover {
 }
 
 .detail-section h2 {
-    color: #007bff;
-    border-bottom: 2px solid #007bff;
+    color: #8B5A3C; /* DARK BROWN-TANGELO */
+    border-bottom: 2px solid #BA8C63; /* DEER */
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
@@ -233,27 +258,28 @@ tr:hover {
 .back-link {
     display: inline-block;
     margin-top: 20px;
-    color: #007bff;
+    color: #8B5A3C; /* DARK BROWN-TANGELO */
     text-decoration: none;
     font-weight: bold;
 }
 
 .back-link:hover {
     text-decoration: underline;
+    color: #BA8C63; /* DEER */
 }
 
 .map-link {
     display: inline-block;
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #28a745;
+    background-color: #8F9779; /* ARTICHOKE */
     color: white;
     text-decoration: none;
     border-radius: 4px;
 }
 
 .map-link:hover {
-    background-color: #218838;
+    background-color: #6d7a5e;
 }
 
 .true {
@@ -264,4 +290,129 @@ tr:hover {
 .false {
     color: red;
     font-weight: bold;
+}
+
+/* Voter Detail Page Styles */
+.detail-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    margin: 20px 0;
+}
+
+.detail-title {
+    color: #8B5A3C; /* DARK BROWN-TANGELO */
+    margin: 0 0 30px 0;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #BA8C63; /* DEER */
+    font-size: 28px;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.section-header {
+    color: #8B5A3C; /* DARK BROWN-TANGELO */
+    margin: 0 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #E4D96F; /* STRAW */
+    font-size: 18px;
+}
+
+.info-item {
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-label {
+    font-weight: bold;
+    color: #555;
+    min-width: 150px;
+    flex-shrink: 0;
+}
+
+.info-value {
+    color: #333;
+    flex: 1;
+}
+
+.address-box {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 10px;
+    border-left: 4px solid #BA8C63; /* DEER */
+}
+
+.party-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: #8F9779; /* ARTICHOKE */
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.score-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: #BA8C63; /* DEER */
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.voting-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.vote-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.election-name {
+    font-weight: bold;
+    color: #555;
+}
+
+.vote-badge {
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.vote-badge.voted {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.vote-badge.not-voted {
+    background-color: #f44336;
+    color: white;
+}
+
+.map-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+    text-align: center;
+}
+
+.back-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
 }

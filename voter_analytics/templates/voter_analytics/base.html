@@ -14,6 +14,10 @@
         <header class="nav-header">
             <div class="nav-container">
                 <h1>Voter Analytics</h1>
+                <nav>
+                    <a href="{% url 'voters' %}">All Voters</a>
+                    <a href="{% url 'graphs' %}">Graphs</a>
+                </nav>
             </div>
         </header>
 
@@ -23,10 +27,5 @@
          {% endblock %}
     </body>
 
-    <footer class="nav-footer">
-        <div class="nav-container">
-            <a href="{% url 'voters' %}">All Voters</a>
-        </div>
-    </footer>
 
 </html>

@@ -1,0 +1,83 @@
+<!--file: templates/voter_analytics/graphs.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the page that extends the base and displays voter data graphs-->
+
+{% extends 'voter_analytics/base.html' %}
+{% block content %}
+
+<div class="voter-page">
+    <h2>Voter Data Graphs</h2>
+
+    <!-- Filter Form -->
+    <h3>Filter Voters</h3>
+    <form method="get" action="">
+        <label for="party_affiliation">Party Affiliation:</label>
+        <select name="party_affiliation" id="party_affiliation">
+            <option value="">All Parties</option>
+            {% for party in party_affiliations %}
+                <option value="{{ party }}" {% if selected_party == party %}selected{% endif %}>{{ party }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="min_year">Min Birth Year:</label>
+        <select name="min_year" id="min_year">
+            <option value="">Any</option>
+            {% for year in birth_years %}
+                <option value="{{ year }}" {% if selected_min_year == year %}selected{% endif %}>{{ year }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="max_year">Max Birth Year:</label>
+        <select name="max_year" id="max_year">
+            <option value="">Any</option>
+            {% for year in birth_years %}
+                <option value="{{ year }}" {% if selected_max_year == year %}selected{% endif %}>{{ year }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="voter_score">Voter Score:</label>
+        <select name="voter_score" id="voter_score">
+            <option value="">Any</option>
+            {% for score in voter_scores %}
+                <option value="{{ score }}" {% if selected_voter_score == score %}selected{% endif %}>{{ score }}</option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+
+        <input type="checkbox" name="v20state" id="v20state" value="on" {% if selected_v20state %}checked{% endif %}>
+        <label for="v20state">v20state</label>
+
+        <input type="checkbox" name="v21town" id="v21town" value="on" {% if selected_v21town %}checked{% endif %}>
+        <label for="v21town">v21town</label>
+
+        <input type="checkbox" name="v21primary" id="v21primary" value="on" {% if selected_v21primary %}checked{% endif %}>
+        <label for="v21primary">v21primary</label>
+
+        <input type="checkbox" name="v22general" id="v22general" value="on" {% if selected_v22general %}checked{% endif %}>
+        <label for="v22general">v22general</label>
+
+        <input type="checkbox" name="v23town" id="v23town" value="on" {% if selected_v23town %}checked{% endif %}>
+        <label for="v23town">v23town</label>
+
+        <br><br>
+
+        <button type="submit">Apply Filters</button>
+        <a href="{% url 'graphs' %}"><button type="button">Clear Filters</button></a>
+    </form>
+
+    <hr>
+
+    <!-- Graphs -->
+    <h3>Distribution of Voters by Year of Birth</h3>
+    {{ birth_year_graph|safe }}
+
+    <h3>Distribution of Voters by Party Affiliation</h3>
+    {{ party_graph|safe }}
+
+    <h3>Voter Participation in Elections</h3>
+    {{ election_graph|safe }}
+
+</div>
+
+{% endblock %}

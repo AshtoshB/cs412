@@ -6,39 +6,133 @@
 {% block content %}
 
 <div class="voter-page">
-    <h2>Voter Details</h2>
+    <div class="detail-card">
+        <h2 class="detail-title">Full Name:{{ voter.first_name }} {{ voter.last_name }}</h2>
 
-    <h3>Personal Information</h3>
-    <p><strong>First Name:</strong> {{ voter.first_name }}</p>
-    <p><strong>Last Name:</strong> {{ voter.last_name }}</p>
-    <p><strong>Date of Birth:</strong> {{ voter.date_of_birth }}</p>
+        <div class="detail-grid">
 
-    <h3>Address Information</h3>
-    <p><strong>Street Number:</strong> {{ voter.RA_street_num }}</p>
-    <p><strong>Street Name:</strong> {{ voter.RA_street_name }}</p>
-    <p><strong>Apartment Number:</strong> {% if voter.RA_apt_num %}{{ voter.RA_apt_num }}{% else %}N/A{% endif %}</p>
-    <p><strong>ZIP Code:</strong> {{ voter.RA_zip }}</p>
-    <p><strong>Full Address:</strong> {{ voter.RA_street_num }} {{ voter.RA_street_name }}{% if voter.RA_apt_num %}, Apt {{ voter.RA_apt_num }}{% endif %}, Newton MA {{ voter.RA_zip }}</p>
+            <!-- Personal Information Section -->
+            <div class="detail-section">
+                <h3 class="section-header">Personal Information</h3>
+                <div class="info-item">
+                    <span class="info-label">First Name:</span>
+                    <span class="info-value">{{ voter.first_name }}</span>
+                </div>
 
-    <h3>Voter Registration Information</h3>
-    <p><strong>Party Affiliation:</strong> {{ voter.party_affiliation }}</p>
-    <p><strong>Precinct Number:</strong> {{ voter.precinct_num }}</p>
-    <p><strong>Date of Registration:</strong> {{ voter.date_of_res }}</p>
-    <p><strong>Voter Score:</strong> {{ voter.voter_score }}</p>
+                <div class="info-item">
+                    <span class="info-label">Last Name:</span>
+                    <span class="info-value">{{ voter.last_name }}</span>
+                </div>
 
-    <h3>Voting History</h3>
-    <p><strong>Voted in 2020 State Election:</strong> {{ voter.v20state }}</p>
-    <p><strong>Voted in 2021 Town Election:</strong> {{ voter.v21town }}</p>
-    <p><strong>Voted in 2021 Primary Election:</strong> {{ voter.v21primary }}</p>
-    <p><strong>Voted in 2022 General Election:</strong> {{ voter.v22general }}</p>
-    <p><strong>Voted in 2023 Town Election:</strong> {{ voter.v23town }}</p>
+                <div class="info-item">
+                    <span class="info-label">Date of Birth:</span>
+                    <span class="info-value">{{ voter.date_of_birth }}</span>
+                </div>
+            </div>
 
-    <h3>Map</h3>
-    <a href="https://www.google.com/maps/search/?api=1&query={{ voter.RA_street_num }}+{{ voter.RA_street_name }}+Newton+MA+{{ voter.RA_zip }}" target="_blank">
-        View Address on Google Maps
-    </a>
 
-    <p><a href="{% url 'voters' %}">Back to Voter List</a></p>
+
+            <!-- Address Information Section -->
+            <div class="detail-section">
+
+                <h3 class="section-header">Address Information</h3>
+
+                <div class="info-item">
+                    <span class="info-label">Street Number:</span>
+                    <span class="info-value">{{ voter.RA_street_num }}</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Street Name:</span>
+                    <span class="info-value">{{ voter.RA_street_name }}</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Apartment:</span>
+                    <span class="info-value">{% if voter.RA_apt_num %}{{ voter.RA_apt_num }}{% else %}N/A{% endif %}</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">ZIP Code:</span>
+                    <span class="info-value">{{ voter.RA_zip }}</span>
+                </div>
+            </div>
+
+
+            <!-- Voter Registration Section -->
+            <div class="detail-section">
+
+                <h3 class="section-header">Voter Registration</h3>
+
+                <div class="info-item">
+                    <span class="info-label">Party Affiliation:</span>
+                    <span class="info-value">{{ voter.party_affiliation }}</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Precinct Number:</span>
+                    <span class="info-value">{{ voter.precinct_num }}</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Registration Date:</span>
+                    <span class="info-value">{{ voter.date_of_res }}</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Voter Score:</span>
+                    <span class="info-value">{{ voter.voter_score }}</span>
+                </div>
+            </div>
+
+
+
+            <!-- Voting History Section -->
+            <div class="detail-section">
+
+                <h3 class="section-header">Voting History</h3>
+                <div class="voting-grid">
+
+                    <div class="vote-item">
+                        <span class="election-name">v20state:</span>
+                        <span class="vote-status">{{ voter.v20state }}</span>
+                    </div>
+
+                    <div class="vote-item">
+                        <span class="election-name">v21town:</span>
+                        <span class="vote-status">{{ voter.v21town }}</span>
+                    </div>
+
+                    <div class="vote-item">
+                        <span class="election-name">v21primary:</span>
+                        <span class="vote-status">{{ voter.v21primary }}</span>
+                    </div>
+
+                    <div class="vote-item">
+                        <span class="election-name">v22general:</span>
+                        <span class="vote-status">{{ voter.v22general }}</span>
+                    </div>
+
+                    <div class="vote-item">
+                        <span class="election-name">v23town:</span>
+                        <span class="vote-status">{{ voter.v23town }}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <a href="https://www.google.com/maps/search/?api=1&query={{ voter.RA_street_num }}+{{ voter.RA_street_name }}+Newton+MA+{{ voter.RA_zip }}" target="_blank" class="map-link">
+                View Address on Google Maps
+            </a>
+        </div>
+
+        <div class="back-section">
+            <a href="{% url 'voters' %}" class="back-link"> Go Back to Voter List</a>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
