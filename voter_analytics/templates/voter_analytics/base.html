@@ -1,0 +1,32 @@
+<!--file: templates/voter_analytics/base.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the base template that contains the navigation bar and footer-->
+
+{% load static %}
+<html>
+
+    <head>
+        <title>Voter Analytics</title>
+        <link rel="stylesheet" href="{% static 'voter_analytics/style.css' %}">
+    </head>
+
+    <body>
+        <header class="nav-header">
+            <div class="nav-container">
+                <h1>Voter Analytics</h1>
+            </div>
+        </header>
+
+
+        <!-- page specific content here-->
+         {% block content %}
+         {% endblock %}
+    </body>
+
+    <footer class="nav-footer">
+        <div class="nav-container">
+            <a href="{% url 'voters' %}">All Voters</a>
+        </div>
+    </footer>
+
+</html>
