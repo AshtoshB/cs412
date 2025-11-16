@@ -1,0 +1,25 @@
+<!--file: templates/dadjokes/base.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the base template that contains the navigation bar -->
+
+{% load static%}
+<html>
+    <head>
+        <title> Random Joke and Photo</title>
+        <link rel="stylesheet" href="{% static 'dadjokes/style.css'%}">
+    </head>
+
+    <body>
+        <nav>
+            <li> <a href = "{% url 'random' %}">Random Joke & Picture</a></li>
+            <li> <a href = "{% url 'jokes' %}">All Jokes</a></li>
+            <li> <a href = "{% url 'pictures' %}">All Pictures</a></li>
+
+
+        
+        </nav>
+        <!-- page specific contenet here-->
+         {% block content %}
+         {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<!-- dadjokes/templates/dadjokes/joke.html-->
+<!--file: templates/dadjokes/jokes.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the page for list of all jokes  -->
+
+
+{% extends "dadjokes/base.html" %}
+
+    {% block content %}
+    <div class="content-wrapper">
+        <h1>All Jokes</h1>
+
+        <div class="jokes-list">
+            {% for joke in jokes %}
+            <div class="list-item">
+                <p class="joke-text">{{joke.text}}</p>
+                <p class="joke-author">- By {{joke.name}}</p>
+            </div>
+            {% empty %}
+            <div class="empty-state">No jokes available yet!</div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}

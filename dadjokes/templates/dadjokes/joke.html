@@ -1,0 +1,16 @@
+<!--file: templates/dadjokes/joke.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the page for detail joke  -->
+
+
+{% extends "dadjokes/base.html" %}
+
+    {% block content %}
+    <div class="content-wrapper">
+        <h1>Joke by {{joke.name}}</h1>
+
+        <div class="joke-container">
+            <p class="joke-text">{{ joke.text }}</p>
+        </div>
+    </div>
+    {% endblock %}

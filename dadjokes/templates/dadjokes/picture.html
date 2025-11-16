@@ -1,0 +1,15 @@
+<!--file: templates/dadjokes/picture.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the page for detail (one) picture  -->
+
+{% extends "dadjokes/base.html" %}
+
+    {% block content %}
+    <div class="content-wrapper">
+        <h1>Picture Joke by {{pic.contributor}}</h1>
+
+        <div class="picture-container">
+            <img src="{{pic.image_url}}" alt="picture by {{pic.contributor}}">
+        </div>
+    </div>
+    {% endblock %}

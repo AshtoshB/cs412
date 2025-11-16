@@ -1,0 +1,23 @@
+<!--file: templates/dadjokes/picture.html-->
+<!--author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!--description: the page for list of all pictures  -->
+
+
+{% extends "dadjokes/base.html" %}
+
+    {% block content %}
+    <div class="content-wrapper">
+        <h1>All Picture Jokes</h1>
+
+        <div class="pictures-list">
+            {% for pic in pictures %}
+            <div class="list-item picture-item">
+                <img src="{{pic.image_url}}" alt="picture by {{pic.contributor}}">
+                <p class="picture-author">- By {{pic.name}}</p>
+            </div>
+            {% empty %}
+            <div class="empty-state">No pictures available yet!</div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,87 @@
+/* file: static/dadjokes/style.css */
+/* author: Ashtosh Bhandari ashtosh@bu.edu */
+/* description: stylesheet for dadjokes application */
+
+body {
+    font-family: Arial;
+    background-color: lightblue;
+    margin: 20px;
+}
+
+nav {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+nav li {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav a {
+    color: blue;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.content-wrapper {
+    background-color: white;
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: darkblue;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.joke-container, .picture-container {
+    border: 2px solid gray;
+    padding: 20px;
+    margin: 15px 0;
+}
+
+.joke-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.joke-author, .picture-author {
+    color: gray;
+    font-style: italic;
+}
+
+.picture-container {
+    text-align: center;
+}
+
+.picture-container img {
+    max-width: 100%;
+    margin: 10px 0;
+}
+
+.list-item {
+    border: 1px solid lightgray;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.picture-item {
+    text-align: center;
+}
+
+.picture-item img {
+    max-width: 100%;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 30px;
+    color: gray;
+}
