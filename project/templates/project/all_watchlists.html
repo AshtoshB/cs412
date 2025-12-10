@@ -3,36 +3,35 @@
 <!-- description: Page showing all users and their watchlists -->
 
 {% extends 'project/base.html' %}
-
 {% block content %}
-<h1>Other's Watchlist</h1>
+    <h1>Other's Watchlist</h1>
 
-{% if user_profiles %}
-    <div class="user-profiles-grid">
+    {% if user_profiles %}
+        <div class="user-profiles-grid">
 
-        {% for profile in user_profiles %}
-            <a href="{% url 'watchlist_detail' profile.pk %}" class="profile-card">
+            {% for profile in user_profiles %}
+                <a href="{% url 'watchlist_detail' profile.pk %}" class="profile-card">
+                    
+                    <div class="profile-pic-container">
+                        {% if profile.profile_pic %}
+                            <img src="{{ profile.profile_pic.url }}" alt="{{ profile.display_name }}'s profile picture" class="profile-pic">
+                        {% else %}
+                            <div class="profile-pic-placeholder">{{ profile.display_name|slice:":1"|upper }}</div>
+                        {% endif %}
+                    </div>
                 
-                <div class="profile-pic-container">
-                    {% if profile.profile_pic %}
-                        <img src="{{ profile.profile_pic.url }}" alt="{{ profile.display_name }}'s profile picture" class="profile-pic">
-                    {% else %}
-                        <div class="profile-pic-placeholder">{{ profile.display_name|slice:":1"|upper }}</div>
-                    {% endif %}
-                </div>
-               
-                <div class="profile-info">
-                    <h3>{{ profile.display_name }}</h3>
-                    {% if profile.bio %}
-                        <p class="profile-bio">{{ profile.bio|truncatewords:20 }}</p>
-                    {% else %}
-                        <p class="profile-bio-empty">No bio yet</p>
-                    {% endif %}
-                </div>
-            </a>
-        {% endfor %}
-    </div>
-{% else %}
-    <p class="empty-message">No watchlists found.</p>
-{% endif %}
+                    <div class="profile-info">
+                        <h3>{{ profile.display_name }}</h3>
+                        {% if profile.bio %}
+                            <p class="profile-bio">{{ profile.bio|truncatewords:20 }}</p>
+                        {% else %}
+                            <p class="profile-bio-empty">No bio yet</p>
+                        {% endif %}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="empty-message">No watchlists found.</p>
+    {% endif %}
 {% endblock %}

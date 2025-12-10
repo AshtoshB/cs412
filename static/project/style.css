@@ -1185,11 +1185,11 @@ h3 {
     background-color: #45a049;
 }
 
-.btn-danger {
+.delete-button {
     background-color: #d32f2f !important;
 }
 
-.btn-danger:hover {
+.delete-button:hover {
     background-color: #b71c1c !important;
 }
 

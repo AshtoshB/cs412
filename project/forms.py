@@ -3,7 +3,7 @@
 # description: define the forms for project applicaitons we use for create/updaet/delete operations 
 
 from django import forms
-from .models import *
+from .models import UserProfile, WatchListEntry, RateMedia, CommentMedia
 
 
 # documentatoin used for widgets: 

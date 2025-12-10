@@ -118,7 +118,7 @@ class RateMedia(models.Model):
     '''Encapsulates the User's rating for a WatchListEntry'''
 
     watchlist_entry = models.OneToOneField(WatchListEntry, on_delete=models.CASCADE) #foreign key to WatchListEntry that this rating belongs to
-    rating = models.IntegerField(choices=Rating) # user rating of the media
+    rating = models.IntegerField(choices=Rating.choices) # user rating of the media
 
     def __str__(self):
         '''return a string representation of rating of media in WatchListEntry of a User'''
