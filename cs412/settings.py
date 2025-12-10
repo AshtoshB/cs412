@@ -49,19 +49,10 @@ INSTALLED_APPS = [
     'voter_analytics',
     'rest_framework', # New (for the rest framework for django)
     'dadjokes',
-    'project',
-
-    # using allauth for Google OAuth
-    'django.contrib.sites', #New
-    'allauth', #New
-    'allauth.account', #New
-    'allauth.socialaccount', #New
-    'allauth.socialaccount.providers.google', #New
+    'project', # New
     
 ]
 
-SITE_ID = 1
-SOCIALACCOUNT_LOGIN_ON_GET=True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,7 +62,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'cs412.urls'
@@ -142,21 +132,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-AUTHENTICATION_BACKENDS = [
-    'allauth.account.auth_backends.AuthenticationBackend'
-    ]
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-}
 
 
 # Default primary key field type
