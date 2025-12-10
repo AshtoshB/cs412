@@ -50,7 +50,4 @@ class CommentMediaForm(forms.ModelForm):
     class Meta:
         model = CommentMedia
         fields = ['comment']
-        widgets = {
-            'comment': forms.Textarea(attrs={'rows': 4, 'cols': 50})
-        }
 
