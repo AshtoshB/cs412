@@ -42,9 +42,7 @@ class RateMediaForm(forms.ModelForm):
     class Meta:
         model = RateMedia
         fields = ['rating']
-        widgets = {
-            'rating': forms.RadioSelect(choices=Rating.choices)
-        }
+        
 
 class CommentMediaForm(forms.ModelForm):
     '''A form to comment on a media item'''
