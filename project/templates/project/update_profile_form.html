@@ -18,6 +18,7 @@
                         {% if field.name != "is_private" %}
                             <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
                             {{ field }}
+                        
                         {% else %}
                             <label for="{{ field.id_for_label }}">
                                 {{ field }} Make my profile private

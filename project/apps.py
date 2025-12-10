@@ -1,3 +1,6 @@
+# file: project/apps.py
+# author: Ashtosh Bhandari ashtosh@bu.edu
+
 from django.apps import AppConfig
 
 
