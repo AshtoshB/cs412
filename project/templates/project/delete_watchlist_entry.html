@@ -1,0 +1,25 @@
+<!-- file: project/templates/project/delete_watchlist_entry.html -->
+<!-- author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!-- description: Confirmation page for deleting a watchlist entry -->
+
+{% extends 'project/base.html' %}
+
+{% block title %}Remove from Watchlist{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h1>Remove from Watchlist?</h1>
+
+        <p>Are you sure you want to remove <strong>{{ object.media_item.title }}</strong> from your watchlist?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-actions">
+                <button type="submit" class="btn-danger">Yes, Remove It</button>
+                <a href="{% url 'my_watchlist' %}" class="btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

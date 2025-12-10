@@ -1,0 +1,43 @@
+<!-- file: project/templates/project/update_profile_form.html -->
+<!-- author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!-- description: Form to update user profile -->
+
+{% extends 'project/base.html' %}
+{% block content %}
+    <div class="auth-container">
+        <div class="auth-card">
+
+            <h1>Update Profile</h1>
+
+            <form method="post" enctype="multipart/form-data" class="auth-form">
+                {% csrf_token %}
+
+                {% for field in form %}
+                    <div class="form-group">
+
+                        {% if field.name != "is_private" %}
+                            <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                            {{ field }}
+                        {% else %}
+                            <label for="{{ field.id_for_label }}">
+                                {{ field }} Make my profile private
+                            </label>
+                            <small>Private profiles won't show reviews to others</small>
+                        {% endif %}
+
+                        {% if field.errors %}
+                            <span class="field-error">{{ field.errors.0 }}</span>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="btn-primary">Update Profile</button>
+            </form>
+
+            <div class="auth-footer">
+                <p><a href="{% url 'my_watchlist' %}">Back to My Watchlist</a></p>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

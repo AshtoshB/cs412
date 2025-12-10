@@ -1,0 +1,1406 @@
+/* file: project/static/project/style.css */
+/* author: Ashtosh Bhandari ashtosh@bu.edu */
+/* description: CSS styles for project application */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Navigation */
+nav {
+    background-color: #333;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #4CAF50;
+}
+
+nav .nav-left,
+nav .nav-right {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+nav .nav-right li {
+    color: white;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Header */
+h1 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #4CAF50;
+}
+
+h2 {
+    color: #555;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+/* Search and Filter Section */
+.filter-section {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.search-box {
+    display: flex;
+    gap: 0.5rem;
+    
+}
+
+.search-box input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.search-box button {
+    padding: 0.75rem 1.5rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-box button:hover {
+    background-color: #45a049;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.filter-group label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.filter-group select,
+.filter-group input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.filter-btn:hover {
+    background-color: #45a049;
+}
+
+.clear-btn {
+    padding: 0.5rem 1.5rem;
+    background-color: #777;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.clear-btn:hover {
+    background-color: #555;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.pagination a {
+    padding: 0.5rem 1rem;
+    background-color: white;
+    color: #4CAF50;
+    text-decoration: none;
+    border: 1px solid #4CAF50;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.pagination a:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination .current {
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Media Items Grid */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.media-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.media-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.media-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.media-card h3 {
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.media-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.release-date {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* User List */
+.user-list {
+    margin-top: 2rem;
+}
+
+.user-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.user-card h2 {
+    margin-top: 0;
+}
+
+.user-card a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.user-card a:hover {
+    color: #45a049;
+    text-decoration: underline;
+}
+
+.watchlist-count {
+    color: #777;
+    margin-top: 0.5rem;
+}
+
+/* Watchlist Categories */
+.watchlist-category {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.watchlist-category h2 {
+    margin-top: 0;
+    color: #4CAF50;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 0.5rem;
+}
+
+.watchlist-item {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.watchlist-item:last-child {
+    border-bottom: none;
+}
+
+.watchlist-item h3 {
+    color: #333;
+}
+
+.watchlist-item-info h3 a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.watchlist-item-info h3 a:hover {
+    text-decoration: underline;
+}
+
+.progress {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+.description {
+    color: #666;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+}
+
+/* Empty State */
+.empty-message {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 2rem;
+}
+
+/* Back Link */
+.back-link {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.back-link a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+/* Media Detail Page */
+.media-detail {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.media-header {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.media-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.media-info h1 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 3px solid #4CAF50;
+    padding-bottom: 0.5rem;
+}
+
+.media-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.media-type-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.media-meta .release-date {
+    color: #777;
+    font-size: 0.95rem;
+}
+
+.media-meta .rating {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.description {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border: 2px solid #4CAF50;
+    border-radius: 4px;
+}
+
+.description h3 {
+    margin-top: 0;
+    color: #4CAF50;
+}
+
+.description p {
+    color: #666;
+    line-height: 1.8;
+}
+
+.season-info {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.season-info h3 {
+    margin-top: 0;
+    color: #4CAF50;
+}
+
+.season-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.season-info li {
+    padding: 0.5rem 0;
+    color: #666;
+}
+
+/* Watchlist Action Section */
+.watchlist-action {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: #f0f8f0;
+    border-radius: 8px;
+    border: 2px solid #4CAF50;
+}
+
+.watchlist-form h3 {
+    margin-top: 0;
+    color: #4CAF50;
+}
+
+.status-options {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.status-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.status-options label:hover {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.status-options input[type="radio"] {
+    cursor: pointer;
+}
+
+.btn-primary {
+    padding: 0.75rem 2rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+.btn-disabled {
+    padding: 0.75rem 2rem;
+    background-color: #ccc;
+    color: #666;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: not-allowed;
+}
+
+.already-in-watchlist {
+    color: #4CAF50;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.login-required {
+    margin-top: 0.5rem;
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.login-required a {
+    color: #d32f2f;
+    text-decoration: underline;
+}
+
+.login-required a:hover {
+    color: #b71c1c;
+}
+
+/* Reviews Section */
+.reviews-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #eee;
+}
+
+.reviews-section h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.review-card {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #4CAF50;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.review-header strong {
+    color: #333;
+    font-size: 1rem;
+}
+
+.review-rating {
+    color: #043940;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.review-comment {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.no-reviews {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 2rem;
+}
+
+/* Authentication Pages (Login/Signup) */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 2rem 0;
+}
+
+.auth-card {
+    background: white;
+    border-radius: 8px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    max-width: 450px;
+    width: 100%;
+}
+
+.auth-card h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid #4CAF50;
+    padding-bottom: 0.75rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group textarea,
+.form-group select {
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.field-error {
+    color: #d32f2f;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 1rem;
+    border-radius: 5px;
+    border-left: 4px solid #d32f2f;
+    margin-bottom: 1rem;
+}
+
+.error-message p {
+    margin: 0;
+}
+
+.info-message {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    padding: 1rem;
+    border-radius: 5px;
+    border-left: 4px solid #1976d2;
+    margin-bottom: 1rem;
+}
+
+.info-message p {
+    margin: 0;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.auth-footer p {
+    color: #666;
+    margin: 0;
+}
+
+.auth-footer a {
+    color: #4CAF50;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Profile Cards Grid (for Other's Watchlist page) */
+.user-profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.profile-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.profile-pic-container {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #4CAF50;
+}
+
+.profile-pic-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #4CAF50;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.profile-info h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.profile-bio {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.profile-bio-empty {
+    color: #999;
+    font-style: italic;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Profile Header (for watchlist detail page) */
+.profile-header {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-header-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.profile-header-pic {
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+}
+
+.profile-header-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #4CAF50;
+}
+
+.profile-pic-placeholder-large {
+    width: 100%;
+    height: 100%;
+    background-color: #4CAF50;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.profile-header-info {
+    flex: 1;
+}
+
+.profile-header-info h1 {
+    margin: 0 0 0.75rem 0;
+    color: #333;
+    border-bottom: none;
+}
+
+.profile-header-bio {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.profile-header-bio-empty {
+    color: #999;
+    font-style: italic;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Expandable Watchlist Items */
+.watchlist-item-expandable {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    background: white;
+    transition: box-shadow 0.2s;
+}
+
+.watchlist-item-expandable:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.watchlist-item-expandable.expanded {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.watchlist-item-header {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+    transition: background-color 0.2s;
+}
+
+.watchlist-item-header:hover {
+    background-color: #f0f0f0;
+}
+
+.watchlist-item-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.watchlist-item-header .progress {
+    margin: 0.25rem 0 0 0;
+    font-size: 0.9rem;
+}
+
+.expand-icon {
+    color: #4CAF50;
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+    user-select: none;
+}
+
+.watchlist-item-expandable.expanded .expand-icon {
+    transform: rotate(180deg);
+}
+
+.watchlist-item-details {
+    padding: 1.5rem;
+    border-top: 2px solid #4CAF50;
+}
+
+.media-detail-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+}
+
+.media-detail-grid .media-poster {
+    width: 100%;
+}
+
+.media-detail-grid .media-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.media-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.media-description {
+    color: #666;
+    line-height: 1.6;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-left: 4px solid #4CAF50;
+    border-radius: 4px;
+    margin: 0;
+}
+
+.media-meta {
+    color: #555;
+    margin: 0;
+}
+
+.user-rating {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #e8f5e9;
+    border-radius: 6px;
+    border: 4px solid #4CAF50;
+    color: #4CAF50;
+    font-weight: bold;
+    font-size: 1.05rem;
+    margin: 0.5rem 0 0 0;
+}
+
+.user-comment {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #e8f5e9;
+    border-radius: 6px;
+    border: 4px solid #4CAF50;
+
+}
+
+.user-comment strong {
+    color: #4CAF50;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.user-comment p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .media-header {
+        grid-template-columns: 1fr;
+    }
+
+    .media-poster {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    nav .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group {
+        width: 100%;
+    }
+
+    .auth-card {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-header-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    .media-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .media-detail-grid .media-poster {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .user-profiles-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* PROFILE HEADER */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.profile-header-pic img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #4CAF50;
+}
+
+.profile-pic-placeholder-large {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: #4CAF50;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.profile-header-info h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.profile-header-bio {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #555;
+}
+
+.profile-header-bio-empty {
+    color: #999;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* WATCHLIST ITEMS */
+.my-watchlist-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.2rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.watchlist-item-content {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.watchlist-item-poster {
+    width: 100px;
+    height: 150px;
+    border-radius: 6px;
+    object-fit: cover;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.watchlist-item-info {
+    flex: 1;
+}
+
+.watchlist-item-info h3 {
+    margin: 0;
+}
+
+.user-rating {
+    margin-top: 0.5rem;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.user-comment {
+    background: #fafafa;
+    padding: 0.75rem;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    border-left: 3px solid #4CAF50;
+    font-size: 0.95rem;
+}
+
+/* WATCHLIST ACTION BUTTONS */
+.watchlist-item-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-width: 120px;
+    justify-content: center;
+}
+
+.btn-small {
+    padding: 0.4rem 1rem;
+    background: #4CAF50;
+    color: white;
+    font-size: 0.85rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-small:hover {
+    background-color: #45a049;
+}
+
+.btn-danger {
+    background-color: #d32f2f !important;
+}
+
+.btn-danger:hover {
+    background-color: #b71c1c !important;
+}
+
+.btn-episodes {
+    background-color: #4CAF50 !important;
+    color: white;
+
+}
+
+.btn-episodes:hover {
+        background-color: #45a049 !important;
+}
+
+
+/* Form container */
+.watchlist-form {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* Spacing for each section */
+.form-section {
+    margin-bottom: 20px;
+}
+
+/* Status / Rating radio options */
+.status-options, .rating-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+/* Comments textarea styling */
+.watchlist-form textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 8px;
+}
+
+/* Buttons row */
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-media-poster {
+    width: 150px;       /* adjust size as needed */
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+
+/* ----------- PAGE CONTAINER ----------- */
+.watchlist-form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    margin-top: 1.5rem;
+    animation: fadeSlideIn 0.3s ease;
+}
+
+@keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.watchlist-form-container h1 {
+    margin-bottom: 1.2rem;
+    border-bottom: 3px solid #4CAF50;
+    padding-bottom: 0.4rem;
+    color: #333;
+}
+
+/* ----------- MEDIA SUMMARY SECTION ----------- */
+.media-summary {
+    display: flex;
+    gap: 1rem;
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 6px;
+    align-items: center;
+    border: 3px solid #4CAF50;
+    margin-bottom: 1.8rem;
+}
+
+.media-summary h2 {
+    margin: 0 0 .3rem;
+    color: #333;
+}
+
+.media-summary p {
+    margin: 0.2rem 0;
+    color: #555;
+}
+
+.form-media-poster {
+    width: 120px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* ----------- FORM SECTIONS ----------- */
+.watchlist-form .form-section {
+    margin-bottom: 1.5rem;
+}
+
+.watchlist-form h3 {
+    color: #333;
+    margin-bottom: .5rem;
+}
+
+/* Status + Rating choices layout */
+.status-options, .rating-options {
+    display: flex;
+    gap: .5rem 1.2rem;
+    flex-wrap: wrap;
+}
+
+/* Comment box match theme */
+.watchlist-form textarea {
+    width: 100%;
+    min-height: 90px;
+    padding: .7rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: .95rem;
+}
+
+.watchlist-form textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 4px rgba(76,175,80,0.3);
+}
+
+/* Error message */
+.field-error {
+    color: #d9534f;
+    font-size: .9rem;
+    margin-top: .3rem;
+    display: block;
+}
+
+/* ----------- BUTTONS ----------- */
+.form-actions {
+    margin-top: 2rem;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+    padding: .6rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: #ddd;
+    color: #333;
+    padding: .6rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-left: 8px;
+    transition: 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #cfcfcf;
+    transform: translateY(-1px);
+}
+
+/* Back link */
+.back-link {
+    margin-top: 1.4rem;
+}
+
+.back-link a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+.logout-btn {
+    background: transparent;
+    color: #4CAF50;
+    border: 2px solid #4CAF50;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: 0.25s ease;
+    font-weight: bold;
+}
+
+/* Hover */
+.logout-btn:hover {
+    background-color: #4CAF50;
+    color: white;
+    transform: translateY(-1px);
+}

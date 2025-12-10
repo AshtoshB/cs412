@@ -1,0 +1,59 @@
+<!-- file: project/templates/project/add_edit_watchlist.html -->
+<!-- author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!-- description: Form to add or edit a watchlist entry with rating and comment -->
+
+{% extends 'project/base.html' %}
+{% block content %}
+
+<div class="media-summary">
+    <img src="{{ media_item.poster_url }}" alt="{{ media_item.title }} poster" class="form-media-poster">
+    <div>
+        <h2>{{ media_item.title }}</h2>
+        <p><strong>Type:</strong> {{ media_item.get_type_display }}</p>
+        <p><strong>Released:</strong> {{ media_item.release_date }}</p>
+    </div>
+</div>
+
+<form method="post" class="watchlist-form">
+    {% csrf_token %}
+
+    <div class="form-section">
+        <h3>Status</h3>
+        <div class="status-options">
+            {% for choice in form.status %}
+                {{ choice }}
+            {% endfor %}
+        </div>
+        {% if form.status.errors %}
+            <span class="field-error">{{ form.status.errors.0 }}</span>
+        {% endif %}
+    </div>
+
+    <div class="form-section">
+        <h3>Rating (Optional)</h3>
+        <div class="rating-options">
+            {% for choice in rating_form.rating %}
+                {{ choice }}
+            {% endfor %}
+        </div>
+        {% if rating_form.rating.errors %}
+            <span class="field-error">{{ rating_form.rating.errors.0 }}</span>
+        {% endif %}
+    </div>
+
+    <div class="form-section">
+        <h3>Comment (Optional)</h3>
+        {{ comment_form.comment }}
+        {% if comment_form.comment.errors %}
+            <span class="field-error">{{ comment_form.comment.errors.0 }}</span>
+        {% endif %}
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn-primary">{% if is_new %}Add to Watchlist{% else %}Update{% endif %}</button>
+        <a href="{% url 'my_watchlist' %}" class="btn-secondary">Cancel</a>
+    </div>
+</form>
+
+
+{% endblock %}

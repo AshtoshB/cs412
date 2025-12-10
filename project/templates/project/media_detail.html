@@ -1,0 +1,92 @@
+<!-- file: project/templates/project/media_detail.html -->
+<!-- author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!-- description: Detail page for a specific media item -->
+
+{% extends 'project/base.html' %}
+
+{% block title %}{{ media_item.title }}{% endblock %}
+
+{% block content %}
+<div class="media-detail">
+    <div class="media-header">
+        <div class="media-poster">
+            {% if media_item.poster_url %}
+                <img src="{{ media_item.poster_url }}" alt="{{ media_item.title }} poster">
+            {% endif %}
+        </div>
+
+        <div class="media-info">
+            <h1>{{ media_item.title }}</h1>
+
+            <div class="media-meta">
+                <span class="media-type-badge">{{ media_item.get_type_display }}</span>
+                <span class="release-date">Released: {{ media_item.release_date }}</span>
+                {% if media_item.rating %}
+                    <span class="rating"><strong>Rating:</strong> {{ media_item.rating }}/10</span>
+                {% endif %}
+            </div>
+
+            {% if media_item.description %}
+                <div class="description">
+                    <h3>Description</h3>
+                    <p>{{ media_item.description }}</p>
+                </div>
+            {% endif %}
+
+            {% if media_item.type == 'show' and media_item.season_ep %}
+                <div class="season-info">
+                    <h3>Seasons & Episodes</h3>
+                    <ul>
+                        {% for season, episodes in media_item.season_ep.items %}
+                            <li>Season {{ season }}: {{ episodes }} episodes</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <!-- Add to Watchlist Section -->
+            <div class="watchlist-action">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'add_edit_watchlist' media_item.pk %}" class="btn-primary">
+                        {% if in_watchlist %}
+                            Edit in Watchlist
+                        {% else %}
+                            Add to Watchlist
+                        {% endif %}
+                    </a>
+                {% else %}
+                    <p class="login-required">
+                        <a href="{% url 'login' %}?next={{ request.path }}">Login</a> or
+                        <a href="{% url 'create_profile' %}">Sign up</a> to add to watchlist
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- User Reviews Section -->
+    <div class="reviews-section">
+        <h2>User Reviews</h2>
+        {% if public_reviews %}
+            <div class="reviews-list">
+                {% for review in public_reviews %}
+                    <div class="review-card">
+                        <div class="review-header">
+                            <strong>{{ review.user }}</strong>
+                            {% if review.rating is not None %}
+                                <span class="review-rating"> {{ review.rating }}/5</span>
+                            {% endif %}
+                        </div>
+                        {% if review.comment %}
+                            <p class="review-comment">{{ review.comment }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-reviews">No public reviews yet. Be the first to review!</p>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

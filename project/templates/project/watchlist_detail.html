@@ -1,0 +1,164 @@
+<!-- file: project/templates/project/watchlist_detail.html -->
+<!-- author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!-- description: Page showing specific user's watchlist with categorized status -->
+
+{% extends 'project/base.html' %}
+{% block content %}
+
+    <!-- User Profile Header -->
+    <div class="profile-header">
+       
+        <div class="profile-header-pic">
+            {% if user_profile.profile_pic %}
+                <img src="{{ user_profile.profile_pic.url }}" alt="{{ user_profile.display_name }}'s profile picture">
+            {% else %}
+                <div class="profile-pic-placeholder-large">{{ user_profile.display_name|slice:":1"|upper }}</div>
+            {% endif %}
+        </div>
+       
+        <div class="profile-header-info">
+            <h1>{{ user_profile.display_name }}</h1>
+            {% if user_profile.bio %}
+                <p class="profile-header-bio">{{ user_profile.bio }}</p>
+            {% else %}
+                <p class="profile-header-bio-empty">No bio yet</p>
+            {% endif %}
+        </div>
+    
+    </div>
+
+    <!-- Watched Section -->
+    <div class="watchlist-category">
+        <h2>Watched</h2>
+       
+        {% if watched %}
+            {% for item in watched %}
+            
+            <details class="watchlist-item-expandable">
+                <summary class="watchlist-item-header">
+                    <h3>{{ item.entry.media_item.title }}</h3>
+                    <span class="expand-icon">expand</span>
+                </summary>
+               
+                <div class="watchlist-item-details">
+                   
+                    <div class="media-detail-grid">
+                        <div class="media-poster">
+                            <a href="{% url 'media_detail' item.entry.media_item.pk %}">
+                                <img src="{{ item.entry.media_item.poster_url }}" alt="{{ item.entry.media_item.title }} poster">
+                            </a>
+                        </div>
+                   
+                        <div class="media-info-section">
+                            <p class="media-description">{{ item.entry.media_item.description }}</p>
+                            <p class="media-meta"><strong>Type:</strong> {{ item.entry.media_item.get_type_display }}</p>
+                            <p class="media-meta"><strong>Released:</strong> {{ item.entry.media_item.release_date }}</p>
+                            {% if item.rating %}
+                                <p class="user-rating"><strong>{{ user_profile.display_name }}'s Rating:</strong> {{ item.rating }}/5</p>
+                            {% endif %}
+                            
+                            {% if item.comment %}
+                                <div class="user-comment">
+                                    <strong>{{ user_profile.display_name }}'s Comment:</strong>
+                                    <p>{{ item.comment }}</p>
+                                </div>
+                            {% endif %}
+                   
+                        </div>
+                    </div>
+                </div>
+            </details>
+            {% endfor %}
+        
+        {% else %}
+            <p class="empty-message">No watched items yet.</p>
+        {% endif %}
+    </div>
+
+    <!-- Watching Section -->
+    <div class="watchlist-category">
+        <h2>Currently Watching</h2>
+        
+        {% if watching %}
+            
+            {% for item in watching %}
+                <details class="watchlist-item-expandable">
+                    <summary class="watchlist-item-header">
+                        <div>
+                            <h3>{{ item.entry.media_item.title }}</h3>
+                            {% if item.total_episodes > 0 %}
+                                <p class="progress">{{ item.watched_episodes }} / {{ item.total_episodes }} episodes watched</p>
+                            {% endif %}
+                        </div>
+                        <span class="expand-icon">▼</span>
+                    </summary>
+                    
+                    <div class="watchlist-item-details">
+                        <div class="media-detail-grid">
+                            <div class="media-poster">
+                                <img src="{{ item.entry.media_item.poster_url }}" alt="{{ item.entry.media_item.title }} poster">
+                            </div>
+                            <div class="media-info-section">
+                                <p class="media-description">{{ item.entry.media_item.description }}</p>
+                                <p class="media-meta"><strong>Type:</strong> {{ item.entry.media_item.get_type_display }}</p>
+                                <p class="media-meta"><strong>Released:</strong> {{ item.entry.media_item.release_date }}</p>
+                                {% if item.rating %}
+                                    <p class="user-rating"><strong>{{ user_profile.display_name }}'s Rating:</strong> {{ item.rating }}/5</p>
+                                {% endif %}
+                                {% if item.comment %}
+                                <div class="user-comment">
+                                    <strong>{{ user_profile.display_name }}'s Comment:</strong>
+                                    <p>{{ item.comment }}</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            {% endfor %}
+        {% else %}
+            <p class="empty-message">Not currently watching anything.</p>
+        {% endif %}
+    </div>
+
+    <!-- Want to Watch Section -->
+    <div class="watchlist-category">
+        <h2>Want to Watch</h2>
+        {% if want_to_watch %}
+            {% for item in want_to_watch %}
+            <details class="watchlist-item-expandable">
+                <summary class="watchlist-item-header">
+                    <h3>{{ item.entry.media_item.title }}</h3>
+                    <span class="expand-icon">▼</span>
+                </summary>
+                <div class="watchlist-item-details">
+                    <div class="media-detail-grid">
+                        <div class="media-poster">
+                            <a href="{% url 'media_detail' item.entry.media_item.pk %}">
+                                <img src="{{ item.entry.media_item.poster_url }}" alt="{{ item.entry.media_item.title }} poster">
+                            </a>
+                        </div>
+                        <div class="media-info-section">
+                            <p class="media-description">{{ item.entry.media_item.description }}</p>
+                            <p class="media-meta"><strong>Type:</strong> {{ item.entry.media_item.get_type_display }}</p>
+                            <p class="media-meta"><strong>Released:</strong> {{ item.entry.media_item.release_date }}</p>
+                            {% if item.rating %}
+                                <p class="user-rating"><strong>{{ user_profile.display_name }}'s Rating:</strong> {{ item.rating }}/5</p>
+                            {% endif %}
+                            {% if item.comment %}
+                            <div class="user-comment">
+                                <strong>{{ user_profile.display_name }}'s Comment:</strong>
+                                <p>{{ item.comment }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </details>
+            {% endfor %}
+        {% else %}
+            <p class="empty-message">No items in want to watch list.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}

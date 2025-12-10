@@ -1,0 +1,47 @@
+<!-- file: project/templates/project/base.html -->
+<!-- author: Ashtosh Bhandari ashtosh@bu.edu -->
+<!-- description: Base template for project application -->
+
+{% load static %}
+<html>
+   
+    <title>Media Tracker</title>
+    
+    <link rel="stylesheet" href="{% static 'project/style.css' %}">
+    </head>
+
+    <body>
+        <nav>
+            <div class="container">
+                <ul class="nav-left">
+                    <a href="{% url 'main' %}">All Media</a>
+                    <a href="{% url 'all_watchlists' %}">Other's Watchlist</a>
+
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'my_watchlist' %}">My Watchlist</a>
+                    {% endif %}
+
+                </ul>
+
+                <ul class="nav-right">
+                    {% if user.is_authenticated %}                        
+                        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-btn">Logout</button>
+                        </form>
+                        
+                    {% else %}
+                        <a href="{% url 'login' %}">Login</a>
+                        <a href="{% url 'create_profile' %}">Sign Up</a>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    </body>
+</html>
