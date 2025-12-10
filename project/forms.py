@@ -3,7 +3,7 @@
 # description: define the forms for project applicaitons we use for create/updaet/delete operations 
 
 from django import forms
-from .models import UserProfile, WatchListEntry, RateMedia, CommentMedia
+from .models import *
 
 
 # documentatoin used for widgets: 
@@ -32,6 +32,10 @@ class AddToWatchlistForm(forms.ModelForm):
     class Meta:
         model = WatchListEntry
         fields = ['status']
+        widgets = {
+            'status': forms.RadioSelect
+        }
+
         
 
 class RateMediaForm(forms.ModelForm):
@@ -40,6 +44,10 @@ class RateMediaForm(forms.ModelForm):
     class Meta:
         model = RateMedia
         fields = ['rating']
+        widgets = {
+            'rating': forms.RadioSelect(choices=Rating.choices) 
+        }
+
         
 
 class CommentMediaForm(forms.ModelForm):
@@ -48,4 +56,7 @@ class CommentMediaForm(forms.ModelForm):
     class Meta:
         model = CommentMedia
         fields = ['comment']
+        widgets = {
+            'comment': forms.Textarea(attrs={'rows': 4, 'cols': 50})
+        }
 
