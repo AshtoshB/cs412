@@ -32,9 +32,7 @@ class AddToWatchlistForm(forms.ModelForm):
     class Meta:
         model = WatchListEntry
         fields = ['status']
-        widgets = {
-            'status': forms.RadioSelect
-        }
+        
 
 class RateMediaForm(forms.ModelForm):
     '''A form to rate a media item'''
