@@ -47,7 +47,7 @@ class CreateProfileView(CreateView):
 
 
 class MainPageView(ListView):
-    """Display all movies and shows with search + filtering + API fallback"""
+    """Display all movies and shows with search and OMDb API fallback"""
     model = MediaItem
     template_name = 'project/main.html'
     context_object_name = 'media_items'
@@ -55,70 +55,106 @@ class MainPageView(ListView):
 
     def get_queryset(self):
         queryset = MediaItem.objects.all()
-
-        # Search functionality
         search_query = self.request.GET.get('search', '').strip()
+
+        # If user typed something into search:
         if search_query:
-            # Search DB (partial + case-insensitive)
+            # First search Django DB
             db_results = queryset.filter(title__icontains=search_query)
+
             if db_results.exists():
                 queryset = db_results
+
             else:
-                # Try API fallback
+                # Nothing in DB, so instead try OMDb
                 try:
                     api_url = "https://www.omdbapi.com/"
-                    params = {
+                    search_params = {
                         "s": search_query,
                         "apikey": settings.OMDB_API_KEY
                     }
 
-                    response = requests.get(api_url, params=params, timeout=5)
-                    data = response.json()
+                    search_res = requests.get(api_url, params=search_params, timeout=5)
+                    search_data = search_res.json()
 
-                    if data.get("Response") == "True":
-                        
-                        # Determine movie vs show
-                        media_type = "movie" if data.get("Type") == "movie" else "show"
+                    if search_data.get("Response") == "True" and "Search" in search_data:
+                        created_ids = []
 
-                        # Parse release year safely
-                        year = data.get("Year", "2000")[:4]
-                        try:
-                            release_date = datetime(int(year), 1, 1)
-                        except:
-                            release_date = datetime(2000, 1, 1)
+                        for entry in search_data["Search"]:
+                            imdb_id = entry.get("imdbID")
+                            if not imdb_id:
+                                continue
 
-                        # Parse rating safely
-                        try:
-                            rating = int(float(data["imdbRating"])) if data.get("imdbRating") not in ("N/A", None) else None
-                        except:
-                            rating = None
+                            # Check if this entry already exists in DB
+                            existing = MediaItem.objects.filter(description__icontains=imdb_id)
+                            if existing.exists():
+                                created_ids.append(existing.first().id)
+                                continue
 
-                        # Create MediaItem
-                        new_item = MediaItem.objects.create(
-                            title=data.get("Title", "Unknown Title"),
-                            type=media_type,
-                            release_date=release_date,
-                            poster_url=data.get("Poster", ""),
-                            description=data.get("Plot", ""),
-                            rating=rating,
-                            season_ep={}
-                        )
+                            # Fetch full details
+                            detail_params = {
+                                "i": imdb_id,
+                                "apikey": settings.OMDB_API_KEY
+                            }
+                            detail_res = requests.get(api_url, params=detail_params, timeout=5)
+                            detail = detail_res.json()
 
-                        queryset = MediaItem.objects.filter(id=new_item.id)
+                            if detail.get("Response") != "True":
+                                continue
+
+                            # Determine media type
+                            omdb_type = detail.get("Type")
+                            if omdb_type == "movie":
+                                media_type = "movie"
+                            elif omdb_type == "series":
+                                media_type = "show"
+                            else:
+                                media_type = "unknown"
+
+                            # Parse release date
+                            year = detail.get("Year", "2000")[:4]
+                            try:
+                                release_date = datetime(int(year), 1, 1)
+                            except:
+                                release_date = datetime(2000, 1, 1)
+
+                            # Parse rating safely
+                            imdb_rating = detail.get("imdbRating")
+                            try:
+                                rating = (
+                                    int(float(imdb_rating))
+                                    if imdb_rating not in ("N/A", None)
+                                    else None
+                                )
+                            except:
+                                rating = None
+
+                            # Create item
+                            new_item = MediaItem.objects.create(
+                                title=detail.get("Title", "Unknown Title"),
+                                type=media_type,
+                                release_date=release_date,
+                                poster_url=detail.get("Poster", ""),
+                                description=f"{detail.get('Plot', '')}\nIMDbID: {imdb_id}",
+                                rating=rating,
+                                season_ep={}
+                            )
+
+                            created_ids.append(new_item.id)
+
+                        queryset = MediaItem.objects.filter(id__in=created_ids)
 
                     else:
                         queryset = MediaItem.objects.none()
 
-                except Exception as e:
-                    # API failure or no result
+                except Exception:
                     queryset = MediaItem.objects.none()
 
-        # Filter by type
+        # Filtering 
         media_type = self.request.GET.get('type', '')
         if media_type:
             queryset = queryset.filter(type=media_type)
 
-        # Filter by rating
         min_rating = self.request.GET.get('min_rating', '')
         if min_rating:
             queryset = queryset.filter(rating__gte=int(min_rating))
@@ -127,13 +163,11 @@ class MainPageView(ListView):
         if max_rating:
             queryset = queryset.filter(rating__lte=int(max_rating))
 
-        # Filter by release year
         release_year = self.request.GET.get('release_year', '')
         if release_year:
             queryset = queryset.filter(release_date__year=release_year)
 
         return queryset.order_by('-release_date')
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -144,6 +178,7 @@ class MainPageView(ListView):
         context['release_year'] = self.request.GET.get('release_year', '')
         context['media_types'] = MEDIA_TYPES
         return context
+
 
 
 class MediaItemDetailView(DetailView):
