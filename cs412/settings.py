@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'voter_analytics',
     'rest_framework', # New (for the rest framework for django)
     'dadjokes',
-    'project', # New
+    #'project', # New
     
 ]
 
