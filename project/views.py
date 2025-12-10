@@ -13,7 +13,7 @@ from django.contrib.auth import login
 from django.urls import reverse
 from django.contrib.auth import views as auth_views
 from django.contrib import messages
-import requests
+#import requests
 from datetime import datetime
 from django.conf import settings
 
@@ -65,90 +65,90 @@ class MainPageView(ListView):
             if db_results.exists():
                 queryset = db_results
 
-            else:
-                # Nothing in DB, so instead try OMDb
-                try:
-                    api_url = "https://www.omdbapi.com/"
-                    search_params = {
-                        "s": search_query,
-                        "apikey": settings.OMDB_API_KEY
-                    }
+            # else:
+            #     # Nothing in DB, so instead try OMDb
+            #     try:
+            #         api_url = "https://www.omdbapi.com/"
+            #         search_params = {
+            #             "s": search_query,
+            #             "apikey": settings.OMDB_API_KEY
+            #         }
 
-                    search_res = requests.get(api_url, params=search_params, timeout=5)
-                    search_data = search_res.json()
+            #         search_res = requests.get(api_url, params=search_params, timeout=5)
+            #         search_data = search_res.json()
 
-                    if search_data.get("Response") == "True" and "Search" in search_data:
-                        created_ids = []
+            #         if search_data.get("Response") == "True" and "Search" in search_data:
+            #             created_ids = []
 
-                        for entry in search_data["Search"]:
-                            imdb_id = entry.get("imdbID")
-                            if not imdb_id:
-                                continue
+            #             for entry in search_data["Search"]:
+            #                 imdb_id = entry.get("imdbID")
+            #                 if not imdb_id:
+            #                     continue
 
-                            # Check if this entry already exists in DB
-                            existing = MediaItem.objects.filter(description__icontains=imdb_id)
-                            if existing.exists():
-                                created_ids.append(existing.first().id)
-                                continue
+            #                 # Check if this entry already exists in DB
+            #                 existing = MediaItem.objects.filter(description__icontains=imdb_id)
+            #                 if existing.exists():
+            #                     created_ids.append(existing.first().id)
+            #                     continue
 
-                            # Fetch full details
-                            detail_params = {
-                                "i": imdb_id,
-                                "apikey": settings.OMDB_API_KEY
-                            }
-                            detail_res = requests.get(api_url, params=detail_params, timeout=5)
-                            detail = detail_res.json()
+            #                 # Fetch full details
+            #                 detail_params = {
+            #                     "i": imdb_id,
+            #                     "apikey": settings.OMDB_API_KEY
+            #                 }
+            #                 detail_res = requests.get(api_url, params=detail_params, timeout=5)
+            #                 detail = detail_res.json()
 
-                            if detail.get("Response") != "True":
-                                continue
+            #                 if detail.get("Response") != "True":
+            #                     continue
 
-                            # Determine media type
-                            omdb_type = detail.get("Type")
-                            if omdb_type == "movie":
-                                media_type = "movie"
-                            elif omdb_type == "series":
-                                media_type = "show"
-                            else:
-                                media_type = "unknown"
+            #                 # Determine media type
+            #                 omdb_type = detail.get("Type")
+            #                 if omdb_type == "movie":
+            #                     media_type = "movie"
+            #                 elif omdb_type == "series":
+            #                     media_type = "show"
+            #                 else:
+            #                     media_type = "unknown"
 
-                            # Parse release date
-                            year = detail.get("Year", "2000")[:4]
-                            try:
-                                release_date = datetime(int(year), 1, 1)
-                            except:
-                                release_date = datetime(2000, 1, 1)
+            #                 # Parse release date
+            #                 year = detail.get("Year", "2000")[:4]
+            #                 try:
+            #                     release_date = datetime(int(year), 1, 1)
+            #                 except:
+            #                     release_date = datetime(2000, 1, 1)
 
-                            # Parse rating safely
-                            imdb_rating = detail.get("imdbRating")
-                            try:
-                                rating = (
-                                    int(float(imdb_rating))
-                                    if imdb_rating not in ("N/A", None)
-                                    else None
-                                )
-                            except:
-                                rating = None
+            #                 # Parse rating safely
+            #                 imdb_rating = detail.get("imdbRating")
+            #                 try:
+            #                     rating = (
+            #                         int(float(imdb_rating))
+            #                         if imdb_rating not in ("N/A", None)
+            #                         else None
+            #                     )
+            #                 except:
+            #                     rating = None
 
-                            # Create item
-                            new_item = MediaItem.objects.create(
-                                title=detail.get("Title", "Unknown Title"),
-                                type=media_type,
-                                release_date=release_date,
-                                poster_url=detail.get("Poster", ""),
-                                description=f"{detail.get('Plot', '')}\nIMDbID: {imdb_id}",
-                                rating=rating,
-                                season_ep={}
-                            )
+            #                 # Create item
+            #                 new_item = MediaItem.objects.create(
+            #                     title=detail.get("Title", "Unknown Title"),
+            #                     type=media_type,
+            #                     release_date=release_date,
+            #                     poster_url=detail.get("Poster", ""),
+            #                     description=f"{detail.get('Plot', '')}\nIMDbID: {imdb_id}",
+            #                     rating=rating,
+            #                     season_ep={}
+            #                 )
 
-                            created_ids.append(new_item.id)
+            #                 created_ids.append(new_item.id)
 
-                        queryset = MediaItem.objects.filter(id__in=created_ids)
+            #             queryset = MediaItem.objects.filter(id__in=created_ids)
 
-                    else:
-                        queryset = MediaItem.objects.none()
+            #         else:
+            #             queryset = MediaItem.objects.none()
 
-                except Exception:
-                    queryset = MediaItem.objects.none()
+            #     except Exception:
+            #         queryset = MediaItem.objects.none()
 
         # Filtering 
         media_type = self.request.GET.get('type', '')
