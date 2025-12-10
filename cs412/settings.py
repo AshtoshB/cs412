@@ -28,6 +28,7 @@ SECRET_KEY = 'django-insecure-t)2!qs#9nkopn+q3$i248nmwrbp!b+s)lg^f=x^*qj95y2l!mq
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+OMDB_API_KEY = "2fd6dc56"
 
 ALLOWED_HOSTS = ['cs-webapps.bu.edu', '127.0.0.1', "http://localhost:8081",
                 
@@ -164,4 +165,3 @@ REST_FRAMEWORK = {
   'PAGE_SIZE': 10
 }
 
-OMDB_API_KEY = "2fd6dc56"
